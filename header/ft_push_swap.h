@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/03 17:27:32 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/05 19:15:54 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 # define FT_PUSH_SWAP_H
 
 # include "../projects/fl_header/ft_first_layer.h"
-# include <stdio.h>
+# include <stdio.h> //da togliere
 
 typedef struct s_node
 {
     int             data;
     struct s_node   *next;
-	struct s_node	*prev;
+//	struct s_node	*prev; CAPISCI
 }	t_node;
-
-typedef struct s_container
-{
-	int		size;
-	t_node	*top;
-	t_node	*bottom;
-}	t_container;
 
 typedef struct s_stack
 {
-	t_container	*a;
-	t_container	*b;
+	t_node	*head;
+	t_node	*tmp;
 }	t_stack;
 
-bool	ft_check_errors(t_stack *stack, int argc, char **argv);
-bool	ft_stacks_exist(t_stack *stack);
+void	ft_check_errors(int argc, char **argv);
+void	ft_error_message();
+void	ft_lets_sort(t_stack *a, t_stack *b, int argc, char **argv);
+t_node	ft_create_node(t_stack *a, char **argv, int i);
 
 #endif

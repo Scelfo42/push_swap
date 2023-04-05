@@ -6,13 +6,13 @@
 #    By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:26:28 by cscelfo           #+#    #+#              #
-#    Updated: 2023/04/03 18:33:54 by cscelfo          ###   ########.fr        #
+#    Updated: 2023/04/05 16:32:02 by cscelfo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = projects
 
-LIB = first_layer.a
+LIB = libft.a
 
 DIR = first_layer
 

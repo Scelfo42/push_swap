@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 13:05:45 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/03 18:22:20 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/05 15:42:51 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,13 @@ int	main(void)
 {
 	int	num1 = ft_atoi("0");
 	int	num2 = ft_atoi("2147483647");
-	int	num3 = ft_atoi("2147483648");
+	int	num3 = ft_atoi("2147483649"); //riparte dal min_int! Serve il long
 	int num4 = ft_atoi("-2147483648");
 	int num5 = ft_atoi("-1");
-	int num6 = ft_atoi("-1a1");
 	
 	ft_printf("\n\nnum1: [%d]\n\n", num1);
 	ft_printf("\n\nnum2: [%d]\n\n", num2);
 	ft_printf("\n\nnum3: [%d]\n\n", num3);
 	ft_printf("\n\nnum4: [%d]\n\n", num4);
 	ft_printf("\n\nnum5: [%d]\n\n", num5);
-	ft_printf("\n\nnum6: [%d]\n\n", num6);
 }*/

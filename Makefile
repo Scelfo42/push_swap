@@ -24,7 +24,7 @@ OBJ_DIR = obj
 
 LIB_DIR = $(OLD_PROJ)/lib
 
-LIB = $(OLD_PROJ_DIR).a
+LIB = libft.a
 
 SRCS_FILES = ft_main.c \
 

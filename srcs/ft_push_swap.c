@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:24:59 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:30 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/05 19:20:11 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack;
+	t_stack	*a;
+	t_stack	*b;
 
-	if (!ft_check_errors(stack, argc, argv))
+	if (argc == 1)
 		return (0);
-	stack->a = malloc(sizeof(t_container));
-	stack->b = malloc(sizeof(t_container));
-	if (!ft_stacks_exist(stack))
+	ft_check_errors(argc, argv); //da controllare
+	a = malloc(sizeof(t_stack));
+	b = malloc(sizeof(t_stack));
+	if (!a || !b)
 		return (0);
+	ft_lets_sort(a, b, argc);
 	return (0);
 }

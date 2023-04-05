@@ -6,38 +6,60 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:51:26 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/03 18:51:02 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/05 18:41:38 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-bool ft_stacks_exist(t_stack *stack) //controllo sul malloc degli stacks
+void	ft_error_message() //i'm the killer
 {
-	if (!stack->a || !stack->b)
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void ft_check_errors(int argc, char **argv) //qui vengono controllati gli errori: (se sono cifre e non superano il max o min degli int)
+{
+	size_t	i;
+	size_t	av_i; //argv_index
+
+	i = 1;
+	av_i = 0;
+	while (i < argc)
 	{
-		write(2, "Error\n", 6);
-		return (false);
+		av_i = 0; //ogni volta riparte dalla prima posizione della stringa
+		while (argv[i][av_i]) //controllo che ogni carattere della stringa sia una cifra
+		{
+			if (ft_isdigit(argv[i][av_i]) == 0)
+				ft_error_message(); //va a schiantarsi
+			av_i++;
+		}
+		if (ft_atol(argv[i]) >= INT_MAX || ft_atol(argv[i]) <= INT_MIN) //controllo che ogni numero non superi max o min int
+			ft_error_message(); //va a schiantarsi
+		i++;
 	}
-	return (true);
+	return; //credo sia corretto
 }
-
-static bool	ft_check_parameters(int argc, char **argv)
+/*
+static bool ft_check_duplicate(argc, argv) //comparazione dei duplicati (da controllare)
 {
-//	int	i;
+	int			i;
+	int			j;
+	long int	bob;
+	long int	comp;
 
-//	i = 1;
-	if (argc == 1)
-		return (false);
-}
-
-bool	ft_check_errors(t_stack *stack, int argc, char **argv) //controllo di tutti gli errori possibili
-{
-	else if(!ft_check_parameters(argc, argv))
-		return (false);
-	else if(!)
-		return (false);
-	else if(!)
-		return (false);
-	return (true);
-}
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		bob = ft_atol(argv[i]);
+		while (j < argc)
+		{
+			comp = ft_atol(argv[j]);
+			if (bob == comp)
+				return (false);
+			j++;
+		}
+		i++;
+	}
+}*/
