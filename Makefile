@@ -14,7 +14,7 @@ HEADER_1 = header/ft_push_swap.h
 
 HEADER_2 = $(OLD_PROJ)/fl_header/ft_first_layer.h
 
-DEPS = headers $(OLD_PROJ)/headers_2
+DEPS = headers $(OLD_PROJ)/fl_header
 
 OLD_PROJ_DIR = first_layer
 
