@@ -24,6 +24,6 @@ int	main(int argc, char **argv)
 	b = malloc(sizeof(t_stack));
 	if (!a || !b)
 		return (0);
-	ft_lets_sort(a, b, argc);
+	ft_lets_sort(a, b, argc, argv);
 	return (0);
 }

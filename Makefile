@@ -14,7 +14,7 @@ HEADER_1 = header/ft_push_swap.h
 
 HEADER_2 = $(OLD_PROJ)/fl_header/ft_first_layer.h
 
-DEPS = headers $(OLD_PROJ)/fl_header
+DEPS = header $(OLD_PROJ)/fl_header
 
 OLD_PROJ_DIR = first_layer
 
@@ -26,7 +26,7 @@ LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
-SRCS_FILES = ft_main.c \
+SRCS_FILES = ft_push_swap.c ft_create_node.c ft_check_errors.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 

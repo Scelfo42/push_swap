@@ -25,13 +25,13 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node	*head;
-	t_node	*tmp;
+	t_list	*head;
+	t_list	*tmp;
 }	t_stack;
 
 void	ft_check_errors(int argc, char **argv);
 void	ft_error_message();
 void	ft_lets_sort(t_stack *a, t_stack *b, int argc, char **argv);
-t_node	ft_create_node(t_stack *a, char **argv, int i);
+t_node	*ft_create_node(t_stack *a, char **argv, int i);
 
 #endif
