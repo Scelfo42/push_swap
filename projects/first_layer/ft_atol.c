@@ -6,12 +6,11 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:09 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/05 16:52:43 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/07 15:44:42 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fl_header/ft_first_layer.h"
-#include <stdio.h>
 
 long int	ft_atol(char *str)
 {
@@ -35,7 +34,7 @@ long int	ft_atol(char *str)
 	}
 	return (result * sign);
 }
-
+/*
 int	main(void)
 {
 	long int	num1 = ft_atol("0");
@@ -53,4 +52,4 @@ int	main(void)
 	printf("\n\nmin-int-1: [%ld]\n\n", num5);
 	printf("\n\n-1: [%ld]\n\n", num6);
 	printf("\n\n1: [%ld]\n\n", num7);
-}
+}*/

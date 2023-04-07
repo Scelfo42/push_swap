@@ -24,18 +24,18 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(ARCL) $(NAME) $(OBJ)
-	clear
+	#clear
 
 clean:
 	$(RM) $(OBJ)
-	clear
+	#clear
 
 fclean: clean
 	$(RM) $(NAME)
-	clear
+	#clear
 
 re: fclean all
-	clear
+	#clear
 
 norm:
 	norminette *

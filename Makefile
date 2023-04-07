@@ -49,22 +49,22 @@ all: $(NAME)
 
 $(NAME): $(SRCS) $(O_SRCS)
 	$(MAKE) -C projects all 
-	$(CC) $(CFLAGS) $(O_SRCS) -o $(NAME) -L $(LIB_DIR)/$(LIB)
-	clear
+	$(CC) $(CFLAGS) $(O_SRCS) $(LIB_DIR)/$(LIB) -o $(NAME)
+	#clear
 
 clean:
 	$(MAKE) -C projects clean
 	$(RM_DIR) $(OBJ_DIR)/
 	$(RM) $(O_SRCS)
-	clear
+	#clear
 
 fclean: clean 
 	$(RM_DIR) $(LIB_DIR)
 	$(RM) $(NAME)
-	clear
+	#clear
 
 re: fclean all
-	clear
+	#clear
 
 push:
 	git add .

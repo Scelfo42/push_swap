@@ -6,7 +6,7 @@
 #    By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:26:28 by cscelfo           #+#    #+#              #
-#    Updated: 2023/04/05 16:32:02 by cscelfo          ###   ########.fr        #
+#    Updated: 2023/04/07 18:10:55 by cscelfo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): dir check_mandatory
 	$(MAKE) -C $(DIR)
 	mv -u $(DIR)/$(LIB) $(LIB_DIR)
-	clear
+	#clear
 
 dir:
 	if [ -d "$(DIR)" ]; then \
@@ -57,7 +57,7 @@ check_mandatory:
 
 clean: check_clean wait
 	$(MAKE) -C $(DIR) clean
-	clear
+	#clear
 
 check_clean:
 	if ls $(DIR)/*.o > /dev/null 2>&1;  then \
@@ -69,7 +69,7 @@ check_clean:
 fclean: check_fclean wait
 	$(MAKE) -C $(DIR) fclean
 	$(RMDIR) $(LIB_DIR)
-	clear
+	#clear
 
 check_fclean:
 	if ls $(LIB_DIR)/$(LIB) > /dev/null 2>&1;  then \
@@ -80,7 +80,7 @@ check_fclean:
 
 re: fclean all
 	$(MAKE) -C $(DIR) re
-	clear
+	#clear
 
 push:
 	git add .

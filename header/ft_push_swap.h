@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/05 19:15:54 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/07 16:16:46 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,30 @@
 
 # include "../projects/fl_header/ft_first_layer.h"
 # include <stdio.h> //da togliere
+# include <stdbool.h>
 
 typedef struct s_node
 {
     int             data;
     struct s_node   *next;
-//	struct s_node	*prev; CAPISCI
+	struct s_node	*prev;
 }	t_node;
 
 typedef struct s_stack
 {
-	t_list	*head;
-	t_list	*tmp;
+	int		size;
+	t_node	*top;
+	t_node	*bottom;
 }	t_stack;
 
-void	ft_check_errors(int argc, char **argv);
+void	ft_check_errors(int argc, char **argv, bool f_split);
 void	ft_error_message();
-void	ft_lets_sort(t_stack *a, t_stack *b, int argc, char **argv);
-t_node	*ft_create_node(t_stack *a, char **argv, int i);
+t_node	*ft_init_node(int data);
+t_node	*ft_last_node(t_node *top);
+void	ft_add_after(t_node **top, t_node *new_node);
+void	ft_populate(t_stack *a, int argc, char **argv, bool f_split);
+void	ft_check_duplicates(t_node *top);
+void	ft_stack_print(t_stack **a);
+int		ft_matlen(char **argv);
 
 #endif
