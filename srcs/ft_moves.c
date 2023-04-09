@@ -1,22 +1,22 @@
 #include "../header/ft_push_swap.h"
 
-bool	ft_ordered(t_stack *a)
+void	sa(t_stack **a)
 {
-	t_node	*previous;
-	t_node	*following;
-
-	previous = a->top;
-	following = a->top->next;
-	while (following)
-	{
-		if (previous->data > following->data) //se trova il successivo maggiore, non è in ordine
-			return (false);
-		previous = following; //scorri
-		following = following->next; //scorri
-	}
-	return (true);
+	t_node *tmp;
+	
+	tmp = (*a)->top;
+	(*a)->top = (*a)->top->next;
+	(*a)->top->next = tmp;
+	(*a)->bottom->prev = tmp;
+	tmp->prev = (*a)->top;
+	tmp->next = (*a)->bottom;
 }
 /*
-void	ft_moves3(t_stack **a)
+void	rra(t_stack **a)
 {
+	t_node	*tmp;
+	t_node	*new_bottom;
+
+	tmp = (*a)->top;
+	new_bottom = (*a)->bottom->prev;
 }*/

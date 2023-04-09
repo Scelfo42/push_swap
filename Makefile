@@ -26,7 +26,7 @@ LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
-SRCS_FILES = ft_push_swap.c ft_create_node.c ft_check_errors.c ft_moves.c \
+SRCS_FILES = ft_push_swap.c ft_create_node.c ft_check_errors.c ft_which_move.c ft_cases.c ft_moves.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 

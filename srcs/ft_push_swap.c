@@ -15,23 +15,21 @@
 void	ft_stack_print(t_stack *a, int argc)
 {
 	t_node	*tmp;
-	t_node	*bob;
+	t_node	*rev;
 	int	i = 1;
-	int	end = argc;
+	int	end = argc - 1;
 
 	tmp = a->top;
-	bob = a->bottom;
-	while (tmp && bob)
+	rev = a->bottom;
+	while (tmp && rev)
 	{
 		ft_printf("\nnodo %d tmp: [%d]\n\n", i, tmp->data);
 		tmp = tmp->next;
-		ft_printf("\nnodo %d bob: [%d]\n\n", i, bob->data);
-		bob = bob->prev;
+		ft_printf("\nnodo %d rev: [%d]\n\n", end, rev->data);
+		rev = rev->prev;
 		i++;
 		end--;
 	}
-	if (ft_ordered(a) == true)
-		ft_printf("Stack already correctly ordered\n\n");
 }
 
 int	main(int argc, char **argv)
@@ -55,7 +53,9 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (0);
 	ft_populate(a, argc, argv, f_split);
+	if (ft_ordered(a) == true)
+		exit(0);
+	ft_stack3(a);
 	ft_stack_print(a, argc);
-//	ft_moves();
 	return (0);
 }

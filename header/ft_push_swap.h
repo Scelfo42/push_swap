@@ -41,5 +41,12 @@ void	ft_check_duplicates(t_node *top);
 void	ft_stack_print(t_stack *a, int argc);
 int		ft_matlen(char **argv);
 bool	ft_ordered(t_stack *a);
+void	ft_stack3(t_stack *a);
+void	ft_case1(t_stack **a);
+void	ft_case2(t_stack **a);
+//void	ft_case3(t_stack **a);
+void	ft_case4(t_stack **a);
+//void	ft_case5(t_stack **a);
+void	sa(t_stack **a);
 
 #endif
