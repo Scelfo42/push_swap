@@ -46,7 +46,8 @@ void	ft_case1(t_stack **a);
 void	ft_case2(t_stack **a);
 //void	ft_case3(t_stack **a);
 void	ft_case4(t_stack **a);
-//void	ft_case5(t_stack **a);
+void	ft_case5(t_stack **a);
 void	sa(t_stack **a);
+void	rra(t_stack **a);
 
 #endif

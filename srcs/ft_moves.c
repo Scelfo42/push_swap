@@ -2,21 +2,30 @@
 
 void	sa(t_stack **a)
 {
-	t_node *tmp;
-	
-	tmp = (*a)->top;
-	(*a)->top = (*a)->top->next;
-	(*a)->top->next = tmp;
-	(*a)->bottom->prev = tmp;
-	tmp->prev = (*a)->top;
-	tmp->next = (*a)->bottom;
+	int	tmp;
+
+	if (a && (*a)->top)
+	{
+		tmp = (*a)->top->data;
+		(*a)->top->data = (*a)->top->next->data;
+		(*a)->top->next->data = tmp;
+		ft_printf("sa\n");
+	}
 }
-/*
+
 void	rra(t_stack **a)
 {
 	t_node	*tmp;
-	t_node	*new_bottom;
 
-	tmp = (*a)->top;
-	new_bottom = (*a)->bottom->prev;
-}*/
+	if (a && (*a)->top)
+	{
+		tmp = (*a)->top;
+		(*a)->top = (*a)->bottom;
+		(*a)->bottom = (*a)->bottom->prev;
+		(*a)->top->next = tmp;
+		tmp->prev = (*a)->top;
+		(*a)->bottom->next = NULL;
+		(*a)->top->prev = NULL;
+    		ft_printf("rra\n");
+	}
+}

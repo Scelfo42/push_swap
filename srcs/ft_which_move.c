@@ -43,7 +43,6 @@ void	ft_stack3(t_stack *a)
 		if (first->data < third->data)
 			ft_case4(&a);
 		else
-			sa(&a); //temporaneo per non avere errori
-			//ft_case5(&a);
+			ft_case5(&a);
 	}
 }

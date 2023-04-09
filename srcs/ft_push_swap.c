@@ -14,20 +14,23 @@
 
 void	ft_stack_print(t_stack *a, int argc)
 {
-	t_node	*tmp;
-	t_node	*rev;
+	t_node	*forward;
+	t_node	*reverse;
 	int	i = 1;
 	int	end = argc - 1;
 
-	tmp = a->top;
-	rev = a->bottom;
-	while (tmp && rev)
+	forward = a->top;
+	reverse = a->bottom;
+	while (forward)
 	{
-		ft_printf("\nnodo %d tmp: [%d]\n\n", i, tmp->data);
-		tmp = tmp->next;
-		ft_printf("\nnodo %d rev: [%d]\n\n", end, rev->data);
-		rev = rev->prev;
+		ft_printf("\nnodo %d tmp: [%d]\n\n", i, forward->data);
+		forward = forward->next;
 		i++;
+	}
+	while (reverse)
+	{
+		ft_printf("\nnodo %d rev: [%d]\n\n", end, reverse->data);
+		reverse = reverse->prev;
 		end--;
 	}
 }
