@@ -26,7 +26,7 @@ LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
-SRCS_FILES = ft_push_swap.c ft_create_node.c ft_check_errors.c \
+SRCS_FILES = ft_push_swap.c ft_create_node.c ft_check_errors.c ft_moves.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 
@@ -83,7 +83,10 @@ push:
 	@echo "$(GREEN)PUSHA KEKKO!$(NC)"
 
 norm:
-	norminette * 
+	norminette *
 
-.PHONY: all clean fclean re push norm
+pull:
+	git pull	
+
+.PHONY: all clean fclean re push norm pull
 .SILENT:

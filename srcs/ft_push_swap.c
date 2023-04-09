@@ -12,18 +12,26 @@
 
 #include "../header/ft_push_swap.h"
 
-void	ft_stack_print(t_stack **a)
+void	ft_stack_print(t_stack *a, int argc)
 {
 	t_node	*tmp;
+	t_node	*bob;
 	int	i = 1;
+	int	end = argc;
 
-	tmp = (*a)->top;
-	while (tmp)
+	tmp = a->top;
+	bob = a->bottom;
+	while (tmp && bob)
 	{
-		ft_printf("\nnodo %d: [%d]\n\n", i, tmp->data);
+		ft_printf("\nnodo %d tmp: [%d]\n\n", i, tmp->data);
 		tmp = tmp->next;
+		ft_printf("\nnodo %d bob: [%d]\n\n", i, bob->data);
+		bob = bob->prev;
 		i++;
+		end--;
 	}
+	if (ft_ordered(a) == true)
+		ft_printf("Stack already correctly ordered\n\n");
 }
 
 int	main(int argc, char **argv)
@@ -47,6 +55,7 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (0);
 	ft_populate(a, argc, argv, f_split);
-	ft_stack_print(&a);
+	ft_stack_print(a, argc);
+//	ft_moves();
 	return (0);
 }

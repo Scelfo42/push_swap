@@ -35,10 +35,11 @@ void	ft_check_errors(int argc, char **argv, bool f_split);
 void	ft_error_message();
 t_node	*ft_init_node(int data);
 t_node	*ft_last_node(t_node *top);
-void	ft_add_after(t_node **top, t_node *new_node);
+void	ft_add_after(t_stack *a, t_node *new_node);
 void	ft_populate(t_stack *a, int argc, char **argv, bool f_split);
 void	ft_check_duplicates(t_node *top);
-void	ft_stack_print(t_stack **a);
+void	ft_stack_print(t_stack *a, int argc);
 int		ft_matlen(char **argv);
+bool	ft_ordered(t_stack *a);
 
 #endif

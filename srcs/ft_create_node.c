@@ -35,19 +35,24 @@ t_node	*ft_last_node(t_node *top)
 	return (top);
 }
 
-void	ft_add_after(t_node **top, t_node *new_node)
+void	ft_add_after(t_stack *a, t_node *new_node)
 {
 	t_node	*last;
 
-	if (top && new_node)
+	if (new_node)
 	{
-		if (*top)
+		if (a->top)
 		{
-			last = ft_last_node(*top);
+			last = ft_last_node(a->top);
 			last->next = new_node;
+			new_node->prev = last;
+			a->bottom = new_node;
 		}
 		else
-			*top = new_node;
+		{
+			a->top = new_node;
+			a->bottom = a->top;
+		}
 	}
 }
 
@@ -61,7 +66,7 @@ void	ft_populate(t_stack *a, int argc, char **argv, bool f_split)
 		i = 1;
 	while (i < argc)
 	{
-		ft_add_after(&(a->top), ft_init_node(ft_atoi(argv[i])));
+		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
 		i++;
 	}
 	ft_check_duplicates(a->top);
