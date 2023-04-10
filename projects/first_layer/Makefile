@@ -14,7 +14,7 @@ SRCS = ft_bzero.c ft_isalpha.c ft_isalnum.c ft_isprint.c ft_isascii.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 	ft_get_next_line.c ft_get_next_line_utils.c ft_get_next_line_bonus.c ft_get_next_line_utils_bonus.c \
 	ft_print_char.c ft_print_str.c ft_print_nbr.c ft_print_u_nbr.c ft_print_hex.c \
-	ft_print_ptr.c ft_printf.c ft_atof.c ft_atol.c \
+	ft_print_ptr.c ft_printf.c ft_atof.c ft_atol.c ft_matlen.c \
 
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -40,5 +40,5 @@ re: fclean all
 norm:
 	norminette *
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm
 .SILENT:

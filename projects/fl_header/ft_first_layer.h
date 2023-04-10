@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:05:19 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/05 16:46:58 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 12:19:17 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ size_t		ft_put_u_nbr(long int n);
 //extra
 double		ft_atof(char *str);
 long int	ft_atol(char *str);
+int			ft_matlen(char **argv);
 
 #endif

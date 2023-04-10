@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 11:08:28 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 12:26:20 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	ft_case5(t_stack **a);
 void	sa(t_stack **a);
 void	rra(t_stack **a);
 void	ra(t_stack **a);
+void	ft_do_split(int	*argc, char ***argv, bool *f_split);
 
 #endif

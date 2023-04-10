@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:51:26 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/07 16:20:43 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 11:51:10 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,4 @@ void	ft_check_duplicates(t_node *top)
 	if (flag > 0)
 		ft_error_message();
 	return;
-}
-
-int	ft_matlen(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i] != 0)
-		i++;
-	return (i);
 }

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_which_move.c                                    :+:      :+:    :+:   */
+/*   ft_splitter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 12:23:51 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:23:53 by cscelfo          ###   ########.fr       */
+/*   Created: 2023/04/10 12:13:44 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/04/10 14:16:07 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-void	ft_stack3(t_stack *a)
+void	ft_do_split(int *argc, char ***argv, bool *f_split)
 {
-	t_node	*first;
-	t_node	*third;
-
-	first = a->top;
-	third = a->bottom;
-	if (first->data > first->next->data)
-	{
-		if (first->data < third->data)
-			ft_case1(&a);
-		else
-		{
-			if (first->next->data > third->data)
-				ft_case2(&a);
-			else
-				ft_case3(&a);
-		}
-	}
-	else
-	{
-		if (first->data < third->data)
-			ft_case4(&a);
-		else
-			ft_case5(&a);
-	}
+	*argv = ft_split(*(*argv + 1), ' ');
+	*argc = ft_matlen(*argv);
+	*f_split = true;
 }
