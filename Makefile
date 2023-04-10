@@ -85,8 +85,5 @@ push:
 norm:
 	norminette *
 
-pull:
-	git pull	
-
-.PHONY: all clean fclean re push norm pull
+.PHONY: all clean fclean re push norm
 .SILENT:
