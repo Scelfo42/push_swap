@@ -6,12 +6,12 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:24:59 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:21:29 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 15:51:14 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
-
+/*
 void	ft_stack_print(t_stack *a, int argc)
 {
 	t_node	*forward;
@@ -34,6 +34,23 @@ void	ft_stack_print(t_stack *a, int argc)
 		end--;
 	}
 }
+*/
+
+void	ft_memory(t_stack **a, t_stack **b)
+{
+	while ((*a)->top->next)
+	{
+		(*a)->top = (*a)->top->next;
+		free((*a)->top->prev);
+		(*a)->top->prev = NULL;
+	}
+	free((*a)->top);
+	(*a)->top = NULL;
+	free(*a);
+	*a = NULL;
+	free(*b);
+	*b = NULL;
+}
 
 int	main(int argc, char **argv)
 {
@@ -51,8 +68,9 @@ int	main(int argc, char **argv)
 	b = malloc(sizeof(t_stack));
 	if (!a || !b)
 		return (0);
-	ft_populate(a, argc, argv, f_split);
+	ft_populate(&a, argc, argv, f_split);
 	ft_stack3(a);
-	ft_stack_print(a, argc);
+	ft_memory(&a, &b);
+	//ft_stack_print(a, argc);
 	return (0);
 }

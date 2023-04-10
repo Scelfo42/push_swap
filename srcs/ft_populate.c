@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:29 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:23:12 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 15:26:46 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,28 @@ t_node	*ft_last_node(t_node *top)
 	return (top);
 }
 
-void	ft_add_after(t_stack *a, t_node *new_node)
+void	ft_add_after(t_stack **a, t_node *new_node)
 {
 	t_node	*last;
 
 	if (new_node)
 	{
-		if (a->top)
+		if ((*a)->top)
 		{
-			last = ft_last_node(a->top);
+			last = ft_last_node((*a)->top);
 			last->next = new_node;
 			new_node->prev = last;
-			a->bottom = new_node;
+			(*a)->bottom = new_node;
 		}
 		else
 		{
-			a->top = new_node;
-			a->bottom = a->top;
+			(*a)->top = new_node;
+			(*a)->bottom = (*a)->top;
 		}
 	}
 }
 
-void	ft_populate(t_stack *a, int argc, char **argv, bool f_split)
+void	ft_populate(t_stack **a, int argc, char **argv, bool f_split)
 {
 	int	i;
 
@@ -85,11 +85,11 @@ void	ft_populate(t_stack *a, int argc, char **argv, bool f_split)
 	while (i < argc)
 	{
 		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
-		a->size++;
+		(*a)->size++;
 		i++;
 	}
-	ft_check_duplicates(a->top);
-	if (ft_check_order(a) == true)
+	ft_check_duplicates((*a)->top);
+	if (ft_check_order(*a) == true)
 		exit(0);
 //	ft_checksize();
 }

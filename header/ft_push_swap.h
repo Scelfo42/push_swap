@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:26:20 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 15:35:30 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_check_errors(int argc, char **argv, bool f_split);
 void	ft_error_message();
 t_node	*ft_init_node(int data);
 t_node	*ft_last_node(t_node *top);
-void	ft_add_after(t_stack *a, t_node *new_node);
-void	ft_populate(t_stack *a, int argc, char **argv, bool f_split);
+void	ft_add_after(t_stack **a, t_node *new_node);
+void	ft_populate(t_stack **a, int argc, char **argv, bool f_split);
 void	ft_check_duplicates(t_node *top);
 void	ft_stack_print(t_stack *a, int argc);
 int		ft_matlen(char **argv);
@@ -51,5 +51,6 @@ void	sa(t_stack **a);
 void	rra(t_stack **a);
 void	ra(t_stack **a);
 void	ft_do_split(int	*argc, char ***argv, bool *f_split);
+void	ft_memory(t_stack **a, t_stack **b);
 
 #endif
