@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/07 16:16:46 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/10 11:08:28 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ bool	ft_ordered(t_stack *a);
 void	ft_stack3(t_stack *a);
 void	ft_case1(t_stack **a);
 void	ft_case2(t_stack **a);
-//void	ft_case3(t_stack **a);
+void	ft_case3(t_stack **a);
 void	ft_case4(t_stack **a);
 void	ft_case5(t_stack **a);
 void	sa(t_stack **a);
 void	rra(t_stack **a);
+void	ra(t_stack **a);
 
 #endif

@@ -26,6 +26,23 @@ void	rra(t_stack **a)
 		tmp->prev = (*a)->top;
 		(*a)->bottom->next = NULL;
 		(*a)->top->prev = NULL;
-    		ft_printf("rra\n");
+    	ft_printf("rra\n");
+	}
+}
+
+void	ra(t_stack **a)
+{
+	t_node *tmp;
+
+	if (a && (*a)->top)
+	{
+		tmp = (*a)->bottom;
+		(*a)->bottom = (*a)->top;
+		(*a)->top = (*a)->top->next;
+		(*a)->bottom->prev = tmp;
+		tmp->next = (*a)->bottom;
+		(*a)->bottom->next = NULL;
+		(*a)->top->prev = NULL;
+		ft_printf("ra\n");
 	}
 }
