@@ -6,29 +6,11 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:29 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 15:26:46 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/11 14:40:46 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
-
-bool	ft_check_order(t_stack *a)
-{
-	t_node	*previous;
-	t_node	*following;
-
-	previous = a->top;
-	following = a->top->next;
-	while (following)
-	{
-		if (previous->data > following->data) //se trova il successivo maggiore, non è in ordine
-			return (false);
-		previous = following; //scorri
-		following = following->next; //scorri
-	}
-	ft_printf("Stack already correctly ordered\n");
-	return (true);
-}
 
 t_node	*ft_init_node(int data)
 {
@@ -74,14 +56,11 @@ void	ft_add_after(t_stack **a, t_node *new_node)
 	}
 }
 
-void	ft_populate(t_stack **a, int argc, char **argv, bool f_split)
+void	ft_populate(t_stack **a, int argc, char **argv)
 {
 	int	i;
 
-	if (f_split == true)
-		i = 0;
-	else
-		i = 1;
+	i = 1;
 	while (i < argc)
 	{
 		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
@@ -89,7 +68,4 @@ void	ft_populate(t_stack **a, int argc, char **argv, bool f_split)
 		i++;
 	}
 	ft_check_duplicates((*a)->top);
-	if (ft_check_order(*a) == true)
-		exit(0);
-//	ft_checksize();
 }

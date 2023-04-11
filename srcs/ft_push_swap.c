@@ -6,18 +6,18 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:24:59 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 15:51:14 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/11 14:41:58 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
-/*
+
 void	ft_stack_print(t_stack *a, int argc)
 {
 	t_node	*forward;
 	t_node	*reverse;
 	int	i = 1;
-	int	end = argc - 1;
+	int	end = argc;
 
 	forward = a->top;
 	reverse = a->bottom;
@@ -34,9 +34,8 @@ void	ft_stack_print(t_stack *a, int argc)
 		end--;
 	}
 }
-*/
 
-void	ft_memory(t_stack **a, t_stack **b)
+void	ft_free_stack(t_stack **a)//, t_stack **b)
 {
 	while ((*a)->top->next)
 	{
@@ -48,29 +47,24 @@ void	ft_memory(t_stack **a, t_stack **b)
 	(*a)->top = NULL;
 	free(*a);
 	*a = NULL;
-	free(*b);
-	*b = NULL;
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	bool    f_split;
+	int		new_argc;
 
-	f_split = false;
 	if (argc == 1)
 		return (0);
-	if (argc == 2)
-		ft_do_split(&argc, &argv, &f_split);
-	ft_check_errors(argc, argv, f_split);
+	new_argc = ft_select_args(argc, &argv);
+	ft_check_errors(new_argc, argv);
 	a = malloc(sizeof(t_stack));
 	b = malloc(sizeof(t_stack));
 	if (!a || !b)
 		return (0);
-	ft_populate(&a, argc, argv, f_split);
-	ft_stack3(a);
-	ft_memory(&a, &b);
-	//ft_stack_print(a, argc);
+	ft_populate(&a, new_argc, argv);
+	ft_sort(&a);//, &b);
+	ft_stack_print(a, new_argc);
 	return (0);
 }

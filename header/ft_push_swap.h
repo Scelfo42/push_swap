@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 15:35:30 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/11 14:42:39 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,40 @@ typedef struct s_stack
 	t_node	*bottom;
 }	t_stack;
 
-void	ft_check_errors(int argc, char **argv, bool f_split);
+/* ERROR MESSAGE */
 void	ft_error_message();
+/* CHECKS */
+void	ft_check_errors(int new_argc, char **argv);
+void	ft_check_duplicates(t_node *top);
+bool	ft_check_order(t_stack **a);
+void	ft_check_size(t_stack **a, t_stack **b);
+void	ft_check_intentions(char **argv);
+/* SPLIT UTILS */
+int		ft_select_args(int argc, char ***argv);
+int		ft_matlen(char **argv);
+/* NODE CREATION */
 t_node	*ft_init_node(int data);
 t_node	*ft_last_node(t_node *top);
 void	ft_add_after(t_stack **a, t_node *new_node);
-void	ft_populate(t_stack **a, int argc, char **argv, bool f_split);
-void	ft_check_duplicates(t_node *top);
-void	ft_stack_print(t_stack *a, int argc);
-int		ft_matlen(char **argv);
-bool	ft_ordered(t_stack *a);
-void	ft_stack3(t_stack *a);
+void	ft_populate(t_stack **a, int argc, char **argv);
+/* SORT */
+void	ft_sort(t_stack **a);//, t_stack **b);
+/* LOW STACK */
+void	ft_stack3(t_stack **a);
+void	ft_stack5(t_stack **a);
+/* STACK 3 CASES */
 void	ft_case1(t_stack **a);
 void	ft_case2(t_stack **a);
 void	ft_case3(t_stack **a);
 void	ft_case4(t_stack **a);
 void	ft_case5(t_stack **a);
+/* STACK OPERATIONS */
 void	sa(t_stack **a);
 void	rra(t_stack **a);
 void	ra(t_stack **a);
-void	ft_do_split(int	*argc, char ***argv, bool *f_split);
-void	ft_memory(t_stack **a, t_stack **b);
+/* FREE MEMORY */
+void	ft_free_stack(t_stack **a);//, t_stack **b);
+/* PRINT THE STACK */
+void	ft_stack_print(t_stack *a, int argc);
 
 #endif

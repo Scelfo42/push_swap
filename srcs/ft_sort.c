@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_which_move.c                                    :+:      :+:    :+:   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 12:23:51 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:23:53 by cscelfo          ###   ########.fr       */
+/*   Created: 2023/04/11 12:47:24 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/04/11 14:00:43 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-void	ft_stack3(t_stack *a)
+void	ft_sort(t_stack **a)//, t_stack **b)
 {
-	t_node	*first;
-	t_node	*third;
-
-	first = a->top;
-	third = a->bottom;
-	if (first->data > first->next->data)
+	if (ft_check_order(a) == true)
 	{
-		if (first->data < third->data)
-			ft_case1(&a);
-		else
-		{
-			if (first->next->data > third->data)
-				ft_case2(&a);
-			else
-				ft_case3(&a);
-		}
+		ft_stack_print(*a, (*a)->size);
+		ft_free_stack(a);
+		exit(0);
 	}
-	else
-	{
-		if (first->data < third->data)
-			ft_case4(&a);
-		else
-			ft_case5(&a);
-	}
+	if ((*a)->size == 2)
+		sa(a);
+	else if ((*a)->size == 3)
+		ft_stack3(a);
 }
