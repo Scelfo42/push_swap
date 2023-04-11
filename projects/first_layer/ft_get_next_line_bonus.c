@@ -28,7 +28,7 @@ char	*join_buf_to_heap(char *dst, char *src, ssize_t byte, size_t q_mem)
 	tmp = ft_strdup(dst);
 	dst = ft_calloc(sizeof(char), (q_mem + byte + 1));
 	dst = ft_cpy(dst, tmp, src, i);
-	ft_free(&tmp);
+	ft_free_char(&tmp);
 	return (dst);
 }
 
@@ -74,7 +74,7 @@ char	*cut_to_line(char *str_to_cut, char *buf)
 		cutted[i] = str_to_cut[i];
 		i++;
 	}
-	ft_free(&str_to_cut);
+	ft_free_char(&str_to_cut);
 	return (cutted);
 }
 
@@ -96,7 +96,7 @@ char	*read_add_to_heap(int fd, char *statica, ssize_t reader)
 				count++;
 		}
 		statica = join_buf_to_heap(statica, s, reader, count);
-		ft_free(&s);
+		ft_free_char(&s);
 		if (!statica)
 			break ;
 		new_line = found_new_line(statica);
@@ -118,17 +118,17 @@ char	*get_next_line(int fd)
 	line = read_add_to_heap(fd, buf[fd], reader);
 	if (!line || !*line)
 	{
-		ft_free(&buf[fd]);
+		ft_free_char(&buf[fd]);
 		return (NULL);
 	}
 	buf[fd] = form_static(line);
 	if (line)
 	{
 		if (!buf[fd] || !*buf[fd])
-			ft_free(&buf[fd]);
+			ft_free_char(&buf[fd]);
 		line = cut_to_line(line, buf[fd]);
 		return (line);
 	}
-	ft_free(&line);
+	ft_free_char(&line);
 	return (NULL);
 }

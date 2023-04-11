@@ -59,8 +59,10 @@ void	ft_add_after(t_stack **a, t_node *new_node)
 void	ft_populate(t_stack **a, int argc, char **argv)
 {
 	int	i;
+	int	j;
 
 	i = 1;
+	j = 0;
 	while (i < argc)
 	{
 		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
@@ -68,4 +70,6 @@ void	ft_populate(t_stack **a, int argc, char **argv)
 		i++;
 	}
 	ft_check_duplicates((*a)->top);
+	while (argv[j])
+		ft_free_char(&(argv[j])); //da sistemare
 }

@@ -52,7 +52,7 @@ void	ft_free_stack(t_stack **a)//, t_stack **b)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack	*b;
+	//t_stack	*b;
 	int		new_argc;
 
 	if (argc == 1)
@@ -60,11 +60,10 @@ int	main(int argc, char **argv)
 	new_argc = ft_select_args(argc, &argv);
 	ft_check_errors(new_argc, argv);
 	a = malloc(sizeof(t_stack));
-	b = malloc(sizeof(t_stack));
-	if (!a || !b)
+	//b = malloc(sizeof(t_stack));
+	if (!a)// || !b)
 		return (0);
 	ft_populate(&a, new_argc, argv);
 	ft_sort(&a);//, &b);
-	ft_stack_print(a, new_argc);
 	return (0);
 }

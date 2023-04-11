@@ -63,10 +63,11 @@ char **ft_split_decorator(char *str, char c)
 	i = 1;
 	while (i <= size)
 	{
-		bob[i] = output[i - 1];
+		bob[i] = ft_strdup(output[i - 1]);
 		i++;
 	}
 	bob[i] = 0;
+	*output = NULL;
 	return (bob);
 }
 

@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*new_s;
 	size_t	s_len;
@@ -22,6 +22,7 @@ char	*ft_strdup(const char *s)
 	if (new_s == NULL)
 		return (NULL);
 	ft_memcpy(new_s, s, s_len);
+	ft_free_char(&s);
 	return (new_s);
 }
 /*

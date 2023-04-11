@@ -24,4 +24,6 @@ void	ft_sort(t_stack **a)//, t_stack **b)
 		sa(a);
 	else if ((*a)->size == 3)
 		ft_stack3(a);
+	ft_stack_print(*a, (*a)->size);
+	ft_free_stack(a);
 }

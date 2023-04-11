@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-static int	ft_countstr(char *s, char c)
+int	ft_countstr(char *s, char c)
 {
 	int	num_str;
 	int	i;
