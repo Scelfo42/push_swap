@@ -81,8 +81,11 @@ int	main(int argc, char **argv)
 	if (!a)// || !b)
 		return (0);
 	ft_populate(&a, new_argc, new_argv, flag);
-	ft_free_argv(new_argv);
-	free(new_argv);
+	if (flag == true)
+	{
+		ft_free_argv(new_argv);
+		free(new_argv);
+	}
 	ft_sort(&a);//, &b);
 	return (0);
 }

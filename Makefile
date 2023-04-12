@@ -6,7 +6,7 @@ CC = clang
 
 DEBUG_FLAG = -g
 
-CFLAGS = -Wall -Wextra -Werror $(DEBUG_FLAG)
+CFLAGS = -Wall -Wextra -Werror $(DEBUG_FLAG) -gdwarf-4
 
 OLD_PROJ = projects
 
@@ -85,5 +85,14 @@ push:
 norm:
 	norminette *
 
-.PHONY: all clean fclean re push norm
+errors: all
+	./errors.sh
+
+test: all
+	./main.sh
+
+mem: all
+	./memory.sh
+
+.PHONY: all clean fclean re push norm errors test mem
 .SILENT:

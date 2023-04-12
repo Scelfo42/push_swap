@@ -59,12 +59,10 @@ void	ft_add_after(t_stack **a, t_node *new_node)
 void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag)
 {
 	int	i;
-	int	j;
 
 	i = 1;
 	if (flag == true)
 		i = 0;
-	j = 0;
 	while (i < new_argc && argv[i])
 	{
 		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
