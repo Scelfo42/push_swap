@@ -37,11 +37,14 @@ void	ft_stack_print(t_stack *a, int argc)
 
 void	ft_free_stack(t_stack **a)//, t_stack **b)
 {
-	while ((*a)->top->next)
+	if ((*a)->size > 1)
 	{
-		(*a)->top = (*a)->top->next;
-		free((*a)->top->prev);
-		(*a)->top->prev = NULL;
+		while ((*a)->top->next)
+		{
+			(*a)->top = (*a)->top->next;
+			free((*a)->top->prev);
+			(*a)->top->prev = NULL;
+		}
 	}
 	free((*a)->top);
 	(*a)->top = NULL;
@@ -58,12 +61,12 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	new_argc = ft_select_args(argc, &argv);
-	ft_check_errors(new_argc, argv);
+	ft_check_errors(new_argc, argv, argc);
 	a = malloc(sizeof(t_stack));
 	//b = malloc(sizeof(t_stack));
 	if (!a)// || !b)
 		return (0);
-	ft_populate(&a, new_argc, argv);
+	ft_populate(&a, new_argc, argv, argc);
 	ft_sort(&a);//, &b);
 	return (0);
 }

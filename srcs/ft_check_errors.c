@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:51:26 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/11 14:50:09 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/12 11:57:03 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ void	ft_error_message() //i'm the killer
 	exit(1);
 }
 
-void ft_check_errors(int new_argc, char **argv) //qui vengono controllati gli errori: (se sono cifre e non superano il max o min degli int)
+void ft_check_errors(int new_argc, char **argv, int argc) //qui vengono controllati gli errori: (se sono cifre e non superano il max o min degli int)
 {
 	int		ac_i; //argc_index
 	size_t	av_i; //argv_index
 
 	ac_i = 1;
+	if (new_argc != argc)
+		ac_i = 0;
 	av_i = 0;
-	while (ac_i < new_argc)
+	while (ac_i < new_argc && argv[ac_i])
 	{
 		av_i = 0; //ogni volta riparte dalla prima posizione della stringa
 		while (argv[ac_i][av_i]) //controllo che ogni carattere della stringa sia una cifra

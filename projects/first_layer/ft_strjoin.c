@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		c;
 	int		k;

@@ -25,7 +25,7 @@ static size_t	ft_minmem(size_t s_len, size_t len, unsigned int start)
 	return (0);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t		i;
 	char		*str;

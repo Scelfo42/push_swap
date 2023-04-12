@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	while (*s)
 	{

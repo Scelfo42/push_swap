@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-int	ft_putstr(const char *str)
+int	ft_putstr(char *str)
 {
 	size_t	i;
 

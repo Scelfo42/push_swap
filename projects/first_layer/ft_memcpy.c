@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
 	size_t		i;
 	char		*cast_dest;

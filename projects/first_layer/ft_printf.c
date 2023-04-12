@@ -34,7 +34,7 @@ static int	ft_check_flag(va_list args, char flag)
 	return (size);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(char *str, ...)
 {
 	int		i;
 	int		space;

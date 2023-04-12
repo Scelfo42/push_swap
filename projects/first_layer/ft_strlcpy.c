@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
 	size_t	i;
 

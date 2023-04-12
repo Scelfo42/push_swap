@@ -32,7 +32,7 @@ int	ft_countstr(char *s, char c)
 	return (num_str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	t_var		var;
 

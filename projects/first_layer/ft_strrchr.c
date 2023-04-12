@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(char *s, int c)
 {
 	int	end_to_st;
 

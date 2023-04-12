@@ -12,25 +12,25 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(char *nptr)
 {
-	char	*cn;
 	int		result;
 	int		sign;
+	int		i;
 
-	cn = (char *)nptr;
 	result = 0;
 	sign = 1;
-	while ((*cn == ' ') || (*cn >= 9 && *cn <= 13))
-		cn++;
-	if (*cn == '-')
+	i = 0;
+	while ((nptr[i] == ' ') || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
 		sign *= -1;
-	if (*cn == '-' || *cn == '+')
-		cn++;
-	while (*cn >= '0' && *cn <= '9')
+	if (nptr[i] == '-' || nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		result = (result * 10) + *cn - '0';
-		cn++;
+		result = (result * 10) + nptr[i] - '0';
+		i++;
 	}
 	return (result * sign);
 }

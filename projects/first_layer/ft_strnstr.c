@@ -12,7 +12,7 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(char *big, char *little, size_t len)
 {
 	char	*b;
 	char	*l;
