@@ -35,19 +35,18 @@ typedef struct s_stack
 void	ft_error_message();
 void	ft_stack_ordered_msg();
 /* CHECKS */
-void	ft_check_errors(int new_argc, char **argv, int argc);
+void	ft_check_errors(int new_argc, char **argv, bool flag);
 void	ft_check_duplicates(t_node *top);
 bool	ft_check_order(t_stack **a);
-void	ft_check_size(t_stack **a, t_stack **b);
 void	ft_check_intentions(char **argv);
 /* SPLIT UTILS */
-int		ft_select_args(int argc, char ***argv);
+int		ft_select_args(int argc, char **argv, char ***new_argv, bool *flag);
 int		ft_matlen(char **argv);
 /* NODE CREATION */
 t_node	*ft_init_node(int data);
 t_node	*ft_last_node(t_node *top);
 void	ft_add_after(t_stack **a, t_node *new_node);
-void	ft_populate(t_stack **a, int new_argc, char **argv, int argcs);
+void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag);
 /* SORT */
 void	ft_sort(t_stack **a);//, t_stack **b);
 /* LOW STACK */
@@ -61,5 +60,6 @@ void	ra(t_stack **a);
 void	ft_free_stack(t_stack **a);//, t_stack **b);
 /* PRINT THE STACK */
 void	ft_stack_print(t_stack *a, int argc);
+void	*ft_malloc(size_t size);
 
 #endif

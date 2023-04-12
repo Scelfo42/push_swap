@@ -19,7 +19,7 @@ void	*ft_free_void(void **ptr)
 	}
 	return (*ptr);
 }
-/*
+
 void	**ft_free_mat(char ***ptr_mat)
 {
 	if (*ptr_mat)
@@ -31,4 +31,4 @@ void	**ft_free_mat(char ***ptr_mat)
 		*ptr_mat = 0;
 	}
 	return ((void **)*ptr_mat);
-}*/
+}

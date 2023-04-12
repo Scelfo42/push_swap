@@ -47,7 +47,7 @@ void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t		ft_strlcat(char *dst, char *src, size_t size);
 size_t		ft_strlcpy(char *dst, char *src, size_t size);
 size_t		ft_strlen(char *s);
-char		*ft_strchr(char *s, int c);
+char		*ft_strchr(char *s, char c);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strdup(char *s);
 char		*ft_strmapi(char *s, char (*f)(unsigned int, char));
@@ -125,6 +125,7 @@ int			ft_matlen(char **argv); //matrix length
 int			ft_countstr(char *s, char c); //for the split
 /* FREE VARIATION */
 void	*ft_free_void(void **ptr);
-//void	**ft_free_mat(char ***ptr_mat);
+void	**ft_free_mat(char ***ptr_mat);
+void	*ft_malloc(size_t size);
 
 #endif

@@ -18,13 +18,15 @@ void	ft_error_message() //i'm the killer
 	exit(1);
 }
 
-void ft_check_errors(int new_argc, char **argv, int argc) //qui vengono controllati gli errori: (se sono cifre e non superano il max o min degli int)
+void ft_check_errors(int new_argc, char **argv, bool flag) //qui vengono controllati gli errori: (se sono cifre e non superano il max o min degli int)
 {
 	int		ac_i; //argc_index
 	size_t	av_i; //argv_index
 
+	if (!argv || !*argv)
+		ft_error_message();
 	ac_i = 1;
-	if (new_argc != argc)
+	if (flag == true)
 		ac_i = 0;
 	av_i = 0;
 	while (ac_i < new_argc && argv[ac_i])
@@ -38,7 +40,7 @@ void ft_check_errors(int new_argc, char **argv, int argc) //qui vengono controll
 				ft_error_message(); //va a schiantarsi
 			av_i++;
 		}
-		if (ft_atol(argv[ac_i]) > INT_MAX || ft_atol(argv[ac_i]) < INT_MIN) //controllo che ogni numero non superi max o min int
+		if (ft_atol(argv[ac_i]) > INT_MAX || ft_atol(argv[ac_i]) < INT_MIN || av_i == 0) //controllo che ogni numero non superi max o min int
 			ft_error_message(); //va a schiantarsi
 		ac_i++;
 	}

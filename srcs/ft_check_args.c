@@ -59,42 +59,22 @@ void	ft_check_intentions(char **argv)
 	return;
 	
 }
-/*
-char **ft_split_decorator(char *str, char c)
-{
-	char	**output;
-	int		size;
-	char	**bob;
-	int		i;
 
-	output = ft_split(str, c);
-	size = ft_matlen(output);
-	bob = ft_calloc(size + 2, sizeof(char **));
-	bob[0] = " ";
-	i = 1;
-	while (i <= size)
-	{
-		bob[i] = ft_strdup(output[i - 1]);
-		i++;
-	}
-	bob[i] = 0;
-	*output = NULL;
-	return (bob);
-}*/
-
-int	ft_select_args(int argc, char ***argv)
+int	ft_select_args(int argc, char **argv, char ***new_argv, bool *flag)
 {
 	int	check_ac;
 
 	check_ac = argc;
-	if (argc == 2 && argv[0][1][0] && argv[0][1][1])
+	*new_argv = argv;
+	if (argc == 2 && ft_strchr(argv[1], ' '))
 	{
-		*argv = ft_split(*(*argv + 1), ' ');
-		check_ac = ft_matlen(*argv);
+		*new_argv = ft_split(*(argv + 1), ' ');
+		if (!*new_argv)
+			return (0);
+		check_ac = ft_matlen(*new_argv);
 		if (check_ac == 1)
-			ft_check_intentions(*argv);
-		else if (argc == check_ac)
-			return (check_ac + 1);
+			ft_check_intentions(*new_argv);
+		*flag = true;
 	}
 	return (check_ac);
 }

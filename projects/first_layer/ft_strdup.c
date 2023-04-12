@@ -18,11 +18,12 @@ char	*ft_strdup(char *s)
 	size_t	s_len;
 
 	s_len = ft_strlen(s) + 1;
-	new_s = (char *)malloc(sizeof(char) * s_len);
-	if (new_s == NULL)
+	new_s = (char *)ft_malloc(sizeof(char) * s_len);
+	if (!new_s)
 		return (NULL);
 	ft_memcpy(new_s, s, s_len);
-	ft_free_char(&s);
+	if (!*new_s)
+		ft_free_char(&new_s);
 	return (new_s);
 }
 /*

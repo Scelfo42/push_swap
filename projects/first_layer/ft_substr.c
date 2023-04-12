@@ -35,7 +35,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	i = 0;
 	s_len = ft_strlen(s);
 	shorter = ft_minmem(s_len, len, start);
-	str = (char *)malloc(sizeof(char) * shorter + 1);
+	str = (char *)ft_malloc(sizeof(char) * shorter + 1);
 	if (str == NULL)
 		return (NULL);
 	while (i < shorter && start < s_len)

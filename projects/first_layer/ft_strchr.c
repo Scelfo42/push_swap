@@ -12,15 +12,18 @@
 
 #include "../fl_header/ft_first_layer.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *s, char c)
 {
-	while (*s)
+	size_t	i;
+
+	i = 0;
+	while (s[i])
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		if (s[i] == c)
+			return (s);
+		i++;
 	}
-	if (*s == (char)c)
-		return ((char *)s);
+	if (s[i] == c)
+		return (s);
 	return (NULL);
 }

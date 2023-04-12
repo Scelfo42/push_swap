@@ -16,7 +16,6 @@ char	*ft_strtrim(char *s1, char *set)
 {
 	size_t	start;
 	size_t	end;
-	char	*str;
 
 	start = 0;
 	if (!s1 || !set)
@@ -28,15 +27,9 @@ char	*ft_strtrim(char *s1, char *set)
 	{
 		while (ft_strchr(set, s1[end]))
 			end--;
-		str = ft_substr(s1, start, (end - start + 1));
-		return (str);
+		free(set);
+		return (ft_substr(s1, start, (end - start + 1)));
 	}
+	free(set);
 	return (ft_strdup(&s1[start]));
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	*s = 0;
-	
-}*/

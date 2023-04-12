@@ -12,6 +12,18 @@
 
 #include "../fl_header/ft_first_layer.h"
 
+static char *ft_char_to_str(char c)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * 2);
+	if (!str)
+		return (0);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
+}
+
 int	ft_countstr(char *s, char c)
 {
 	int	num_str;
@@ -39,11 +51,11 @@ char	**ft_split(char *s, char c)
 	var.i = 0;
 	var.k = 0;
 	var.j = 0;
-	var.trim = ft_strtrim(s, &c);
-	if (!var.trim)
+	var.trim = ft_strtrim(s, ft_char_to_str(c));
+	if (!var.trim || !*var.trim)
 		return (NULL);
 	var.nb_str = ft_countstr(var.trim, c);
-	var.arr_p = (char **)malloc(sizeof(char *) * (var.nb_str + 1));
+	var.arr_p = (char **)ft_malloc(sizeof(char *) * (var.nb_str + 1));
 	if (!var.arr_p)
 		return (NULL);
 	while (var.i < var.nb_str)

@@ -16,7 +16,7 @@ t_node	*ft_init_node(int data)
 {
 	t_node	*new_node;
 
-	new_node = malloc(sizeof(t_node));
+	new_node = ft_malloc(sizeof(t_node));
 	if (!new_node)
 		return (0);
 	new_node->data = data;
@@ -56,13 +56,13 @@ void	ft_add_after(t_stack **a, t_node *new_node)
 	}
 }
 
-void	ft_populate(t_stack **a, int new_argc, char **argv, int argc)
+void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	if (new_argc != argc)
+	if (flag == true)
 		i = 0;
 	j = 0;
 	while (i < new_argc && argv[i])
