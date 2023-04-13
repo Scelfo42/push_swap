@@ -26,7 +26,7 @@ LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
-SRCS_FILES = ft_push_swap.c ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c ft_check_args.c ft_sort.c \
+SRCS_FILES = ft_push_swap.c ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c ft_check_args.c ft_sort.c ft_free_all.c list_printer.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 
@@ -85,14 +85,5 @@ push:
 norm:
 	norminette *
 
-errors: all
-	./errors.sh
-
-test: all
-	./main.sh
-
-mem: all
-	./memory.sh
-
-.PHONY: all clean fclean re push norm errors test mem
+.PHONY: all clean fclean re push norm
 .SILENT:

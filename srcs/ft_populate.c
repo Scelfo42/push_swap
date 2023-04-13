@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:29 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/11 14:40:46 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/13 11:01:09 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,31 @@ t_node	*ft_init_node(int data)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
+}
+
+t_node	*ft_destroy_node(t_stack **a, t_stack **b, char c)
+{
+	t_node	*tmp;
+
+	tmp = NULL;
+	if (c == 'a')
+	{
+		tmp = (*a)->top->prev;
+		free(tmp);
+		tmp = NULL;
+		(*a)->top->prev = NULL;
+	}
+	else if (c == 'b')
+	{
+		tmp = (*b)->top;
+		if ((*b)->size != 0)
+			tmp = (*b)->top->prev;
+		free(tmp);
+		tmp = NULL;
+		if ((*b)->size != 0)
+			(*b)->top->prev = NULL;
+	}
+	return (tmp);
 }
 
 t_node	*ft_last_node(t_node *top)
@@ -56,18 +81,18 @@ void	ft_add_after(t_stack **a, t_node *new_node)
 	}
 }
 
-void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag)
+void	ft_populate(t_stack **a, int new_argc, char **new_argv, bool flag)
 {
 	int	i;
 
 	i = 1;
 	if (flag == true)
 		i = 0;
-	while (i < new_argc && argv[i])
+	while (i < new_argc && new_argv[i])
 	{
-		ft_add_after(a, ft_init_node(ft_atoi(argv[i])));
+		ft_add_after(a, ft_init_node(ft_atoi(new_argv[i])));
 		(*a)->size++;
 		i++;
 	}
-	ft_check_duplicates((*a)->top);
+	ft_check_duplicates(a, new_argv, flag);
 }

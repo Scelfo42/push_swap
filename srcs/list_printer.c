@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   list_printer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 12:47:24 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 11:16:09 by cscelfo          ###   ########.fr       */
+/*   Created: 2023/04/13 12:05:50 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/04/13 15:50:42 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
+void	ft_stack_print(t_stack *a, int argc)
 {
-	if (ft_check_order(a, true) == true)
+	t_node	*forward = a->top;
+	t_node	*reverse = a->bottom;
+	int	i = 1;
+	int	end = argc;
+
+	while (forward)
 	{
-		ft_stack_print(*a, (*a)->size);
-		//ft_free_world(a, new_argv, flag);
-		exit(0);
+		ft_printf("\nnodo %d forward: [%d]\n\n", i, forward->data);
+		forward = forward->next;
+		i++;
 	}
-	(*b)->size = 0;
-	if ((*a)->size == 2)
-		sa(a);
-	else if ((*a)->size == 3)
-		ft_stack3(a);
-	else if ((*a)->size == 5)
-		ft_stack5(a, b);
-	ft_stack_print(*a, (*a)->size);
-	ft_free_world(a, new_argv, flag);
+	while (reverse)
+	{
+		ft_printf("\nnodo %d reverse: [%d]\n\n", end, reverse->data);
+		reverse = reverse->prev;
+		end--;
+	}
 }

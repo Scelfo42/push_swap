@@ -6,18 +6,13 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:13:44 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/12 11:54:15 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/13 12:24:55 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-void	ft_stack_ordered_msg()
-{
-	ft_printf("Stack already correctly ordered\n");
-}
-
-bool	ft_check_order(t_stack **a)
+bool	ft_check_order(t_stack **a, bool msg)
 {
 	t_node	*previous;
 	t_node	*following;
@@ -34,7 +29,8 @@ bool	ft_check_order(t_stack **a)
 			following = following->next; //scorri
 		}
 	}
-	ft_stack_ordered_msg();
+	if (msg == true)
+		ft_printf("Stack already correctly ordered\n");
 	return (true);
 }
 
@@ -48,14 +44,14 @@ void	ft_check_intentions(char **argv)
 		while (argv[0][i])
 		{
 			if (ft_isdigit(argv[0][i]) == 0)
-				ft_error_message();
+				ft_error_message(argv, true);
 			i++;
 		}
 		if (ft_atol(argv[0]) > INT_MAX || ft_atol(argv[0]) < INT_MIN)
-			ft_error_message();
+			ft_error_message(argv, true);
 	}
 	else
-		ft_error_message();
+		ft_error_message(argv, true);
 	return;
 	
 }
