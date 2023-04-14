@@ -17,30 +17,43 @@ void	ft_stack3(t_stack **a)
 	if ((*a)->top->data > (*a)->top->next->data)
 	{
 		if ((*a)->top->data < (*a)->bottom->data)
-			sa(a);
+			ft_swap(a, 'a');
 		else
 		{
 			if ((*a)->top->next->data > (*a)->bottom->data)
 			{
-				sa(a);
-				rra(a);
+				ft_swap(a, 'a');
+				ft_reverse_rotate(a, 'a');
 			}
 			else
-				ra(a);
+				ft_rotate(a, 'a');
 		}
 	}
 	else
 	{
 		if ((*a)->top->data < (*a)->bottom->data)
 		{
-			sa(a);
-			ra(a);
+			ft_swap(a, 'a');
+			ft_rotate(a, 'a');
 		}
 		else
-			rra(a);
+			ft_reverse_rotate(a, 'a');
 	}
 }
 
 void	ft_stack5(t_stack **a, t_stack **b)
 {
+	while ((*a)->size > 3)
+	{
+		if ((*a)->top->data == ft_smallest(*a) || (*a)->top->data == ft_biggest(*a))
+		{
+			ft_push(a, b, 'b');
+			(*a)->size--;
+			(*b)->size++;
+		}
+		else
+			ft_rotate(a, 'a');
+	}
+	if (!ft_check_order(a, false))
+		ft_stack3(a);
 }

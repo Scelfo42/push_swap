@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:17:47 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 12:20:52 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:31:29 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,25 @@ int		ft_matlen(char **argv);
 /* NODE CREATION */
 t_node	*ft_init_node(int data);
 t_node	*ft_last_node(t_node *top);
+void	ft_add_before(t_node *first_node, t_stack **to);
 void	ft_add_after(t_stack **a, t_node *new_node);
 void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag);
-/* TOP NODE DESTRUCTION */
-t_node	*ft_destroy_node(t_stack **a, t_stack **b, char c);
 /* SORT */
 void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b);
 /* LOW STACK */
 void	ft_stack3(t_stack **a);
 void	ft_stack5(t_stack **a, t_stack **b);
 /* UTILS */
+int		ft_smallest(t_stack *ab);
+int		ft_biggest(t_stack *ab);
 /* STACK OPERATIONS */
 void	ft_swap(t_stack **ab, char stack_name);
-void	ss(t_stack **ab);
-// void	pa(t_stack **a, t_stack **b);
-// void	pb(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-// void	rb(t_stack **b);
-// void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-// void	rrb(t_stack **b);
-// void	rrr(t_stack **a, t_stack **b);
+void	ft_push(t_stack **from, t_stack **to, char stack_to_name);
+void	ft_rotate(t_stack **ab, char stack_name);
+void	ft_reverse_rotate(t_stack **ab, char stack_name);
+void	ss(t_stack **a, t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 /* FREE MEMORY */
 void	ft_free_argv(char **argv);
 void	ft_free_stack(t_stack **a);

@@ -1,22 +1,22 @@
 #include "../header/ft_push_swap.h"
 
-void	ss(t_stack **ab)
+void	ss(t_stack **a, t_stack **b)
 {
-	ft_swap(ab, 'a');
-	ft_swap(ab, 'b');
+	ft_swap(a, 'a');
+	ft_swap(b, 'b');
 	ft_printf("ss\n");
 }
 
-void	rr(t_stack **ab)
+void	rr(t_stack **a, t_stack **b)
 {
-	ft_rotate(ab, 'a');
-	ft_rotate(ab, 'b');
+	ft_rotate(a, 'a');
+	ft_rotate(b, 'b');
 	ft_printf("rr\n");
 }
 
-void	rrr(t_stack **ab)
+void	rrr(t_stack **a, t_stack **b)
 {
-	ft_reverse_rotate(ab, 'a');
-	ft_reverse_rotate(ab, 'b');
+	ft_reverse_rotate(a, 'a');
+	ft_reverse_rotate(b, 'b');
 	ft_printf("rrr\n");
 }
