@@ -54,14 +54,11 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b);
 void	ft_stack3(t_stack **a);
 void	ft_stack5(t_stack **a, t_stack **b);
 /* UTILS */
-void	ft_find_pos(t_stack **a, t_stack **b);
-void	ft_add_middle(t_stack **a, t_stack **b, int count);
 /* STACK OPERATIONS */
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
+void	ft_swap(t_stack **ab, char stack_name);
+void	ss(t_stack **ab);
+// void	pa(t_stack **a, t_stack **b);
+// void	pb(t_stack **a, t_stack **b);
 void	ra(t_stack **a);
 // void	rb(t_stack **b);
 // void	rr(t_stack **a, t_stack **b);

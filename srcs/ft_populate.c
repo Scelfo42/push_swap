@@ -25,31 +25,6 @@ t_node	*ft_init_node(int data)
 	return (new_node);
 }
 
-t_node	*ft_destroy_node(t_stack **a, t_stack **b, char c)
-{
-	t_node	*tmp;
-
-	tmp = NULL;
-	if (c == 'a')
-	{
-		tmp = (*a)->top->prev;
-		free(tmp);
-		tmp = NULL;
-		(*a)->top->prev = NULL;
-	}
-	else if (c == 'b')
-	{
-		tmp = (*b)->top;
-		if ((*b)->size != 0)
-			tmp = (*b)->top->prev;
-		free(tmp);
-		tmp = NULL;
-		if ((*b)->size != 0)
-			(*b)->top->prev = NULL;
-	}
-	return (tmp);
-}
-
 t_node	*ft_last_node(t_node *top)
 {
 	if (top && top->next)
@@ -60,17 +35,32 @@ t_node	*ft_last_node(t_node *top)
 	return (top);
 }
 
+void	ft_add_before(t_node *first_node, t_stack **to)
+{
+	if (first_node)
+	{
+		if ((*to)->top)
+		{
+			(*to)->top->prev = first_node;
+			first_node->next = (*to)->top;
+			(*to)->top = (*to)->top->prev;
+		}
+		else
+		{
+			(*to)->top = first_node;
+			(*to)->bottom = (*to)->top;
+		}
+	}
+}
+
 void	ft_add_after(t_stack **a, t_node *new_node)
 {
-	t_node	*last;
-
 	if (new_node)
 	{
 		if ((*a)->top)
 		{
-			last = ft_last_node((*a)->top);
-			last->next = new_node;
-			new_node->prev = last;
+			(*a)->bottom->next = new_node;
+			new_node->prev = (*a)->bottom;
 			(*a)->bottom = new_node;
 		}
 		else

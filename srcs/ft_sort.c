@@ -22,7 +22,7 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 	}
 	(*b)->size = 0;
 	if ((*a)->size == 2)
-		sa(a);
+		ft_swap(a, 'a');
 	else if ((*a)->size == 3)
 		ft_stack3(a);
 	else if ((*a)->size == 5)

@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	new_argc = ft_select_args(argc, argv, &new_argv, &flag);
 	ft_check_errors(new_argc, new_argv, flag);
 	a = ft_calloc(1, sizeof(t_stack));
-	b = ft_malloc(sizeof(t_stack));
+	b = ft_calloc(1, sizeof(t_stack));
 	if (!a || !b)
 		return (0);
 	ft_populate(&a, new_argc, new_argv, flag);
