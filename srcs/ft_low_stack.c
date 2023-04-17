@@ -12,48 +12,35 @@
 
 #include "../header/ft_push_swap.h"
 
-void	ft_stack3(t_stack **a)
+void	ft_stack3(t_stack **stack)
 {
-	if ((*a)->top->data > (*a)->top->next->data)
-	{
-		if ((*a)->top->data < (*a)->bottom->data)
-			ft_swap(a, 'a');
-		else
-		{
-			if ((*a)->top->next->data > (*a)->bottom->data)
-			{
-				ft_swap(a, 'a');
-				ft_reverse_rotate(a, 'a');
-			}
-			else
-				ft_rotate(a, 'a');
-		}
-	}
-	else
-	{
-		if ((*a)->top->data < (*a)->bottom->data)
-		{
-			ft_swap(a, 'a');
-			ft_rotate(a, 'a');
-		}
-		else
-			ft_reverse_rotate(a, 'a');
-	}
+	if ((*stack)->top->data == ft_biggest((*stack)->top))
+		ft_rotate(stack, 'a');
+	else if ((*stack)->top->next->data == ft_biggest((*stack)->top))
+		ft_reverse_rotate(stack, 'a');
+	if ((*stack)->top->data > (*stack)->top->next->data)
+		ft_swap (stack, 'a');
 }
 
-void	ft_stack5(t_stack **a, t_stack **b)
+void	ft_stack_any(t_stack **a, t_stack **b)
 {
+	int	min;
+	int	pos;
+
 	while ((*a)->size > 3)
 	{
-		if ((*a)->top->data == ft_smallest(*a) || (*a)->top->data == ft_biggest(*a))
+		pos = ft_find_pos_min((*a)->top, &min);
+		while ((*a)->top->data != min)
 		{
-			ft_push(a, b, 'b');
-			(*a)->size--;
-			(*b)->size++;
+			if (pos <= ((*a)->size / 2) + 1)
+				ft_rotate(a, 'a');
+			else
+				ft_reverse_rotate(a, 'a');
 		}
-		else
-			ft_rotate(a, 'a');
+		ft_push(a, b, 'b');
 	}
 	if (!ft_check_order(a, false))
 		ft_stack3(a);
+	while ((*b)->size != 0)
+		ft_push(b, a, 'a');
 }

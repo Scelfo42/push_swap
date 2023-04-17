@@ -66,7 +66,10 @@ void	ft_push(t_stack **from, t_stack **to, char stack_to_name)
 	save_first = (*from)->top;
 	(*from)->top = (*from)->top->next;
 	save_first->next = NULL;
-	(*from)->top->prev = NULL;
+	if ((*from)->top)
+		(*from)->top->prev = NULL;
+	(*from)->size -= 1;
+	(*to)->size += 1;
 	ft_add_before(save_first, to);
 	if (stack_to_name == 'a')
 		ft_printf("pa\n");

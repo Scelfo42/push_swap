@@ -16,8 +16,8 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 {
 	if (ft_check_order(a, true) == true)
 	{
-		ft_stack_print(*a, (*a)->size);
-		//ft_free_world(a, new_argv, flag);
+		//ft_stack_print(*a, (*a)->size);
+		ft_free_world(a, new_argv, flag);
 		exit(0);
 	}
 	(*b)->size = 0;
@@ -25,8 +25,8 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 		ft_swap(a, 'a');
 	else if ((*a)->size == 3)
 		ft_stack3(a);
-	else if ((*a)->size == 5)
-	 	ft_stack5(a, b);
-	ft_stack_print(*a, (*a)->size);
+ 	else
+		ft_stack_any(a, b);
+	//ft_stack_print(*a, (*a)->size);
 	ft_free_world(a, new_argv, flag);
 }

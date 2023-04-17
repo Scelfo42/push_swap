@@ -50,11 +50,12 @@ void	ft_populate(t_stack **a, int new_argc, char **argv, bool flag);
 /* SORT */
 void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b);
 /* LOW STACK */
-void	ft_stack3(t_stack **a);
-void	ft_stack5(t_stack **a, t_stack **b);
+void	ft_stack3(t_stack **stack);
+void	ft_stack_any(t_stack **a, t_stack **b);
 /* UTILS */
-int		ft_smallest(t_stack *ab);
-int		ft_biggest(t_stack *ab);
+int		ft_smallest(t_node *top);
+int		ft_biggest(t_node *top);
+int		ft_find_pos_min(t_node *top, int *min);
 /* STACK OPERATIONS */
 void	ft_swap(t_stack **ab, char stack_name);
 void	ft_push(t_stack **from, t_stack **to, char stack_to_name);
