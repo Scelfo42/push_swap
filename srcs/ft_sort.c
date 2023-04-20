@@ -25,6 +25,8 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 		ft_swap(a, 'a');
 	else if ((*a)->size == 3)
 		ft_stack3(a);
+	else if ((*a)->size > 10)
+		ft_stack_big(a);//, b);
  	else
 		ft_stack_any(a, b);
 	//ft_stack_print(*a, (*a)->size);
