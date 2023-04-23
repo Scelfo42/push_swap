@@ -15,6 +15,27 @@ int	*ft_stack_to_arr(t_node *top, int stack_size)
 	return (arr);
 }
 
+int *ft_create_arr_lis(int *arr_stack, int *lis, int len, int size)
+{
+	int	*arr_lis;
+	int	end;
+
+	arr_lis = ft_calloc(len, sizeof(int));
+	end = len;
+	while (size-- > 0)
+	{
+		if (lis[size] == end)
+			arr_lis[--end] = arr_stack[size];
+	}
+	/*while (arr_lis[end] != 0)
+	{
+		ft_printf("array lis[%d]: %d\n", end, arr_lis[end]);
+		end++;
+	}*/
+	free(lis);
+	return (arr_lis);
+}
+
 int	*ft_lis(int *arr_stack, int stack_size, int *len)
 {
 	int	*lis;
@@ -26,6 +47,7 @@ int	*ft_lis(int *arr_stack, int stack_size, int *len)
 	while (i < stack_size)
 		lis[i++] = 1;
 	i = 0;
+	*len = 1;
 	while (i < stack_size)
 	{
 		j = i + 1;
@@ -39,22 +61,51 @@ int	*ft_lis(int *arr_stack, int stack_size, int *len)
 		if (lis[j] > *len)
 			*len = lis[j];
 	}
-	ft_printf("total lis: %d\n", *len);
+/*	ft_printf("total lis: %d\n", *len);
 	i = 0;
 	while (lis[i] != 0)
 	{
-		ft_printf("array lis[%d]: %d\n", i, lis[i]);
+		ft_printf("array stack[%d]: %d\n", i, arr_stack[i]);
+		ft_printf("array lis index[%d]: %d\n", i, lis[i]);
 		i++;
-	}
-	return (lis);
+	}*/
+	return (ft_create_arr_lis(arr_stack, lis, *len, stack_size));
 }
 
-void	ft_stack_big(t_stack **a)//, t_stack **b)
+void	ft_lis_selection(t_stack **a, t_stack **b, int *lis, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		if ((*a)->top->data == lis[i])
+		{
+			ft_rotate(a, 'a');
+			i++;
+		}
+		else
+			ft_push(a, b, 'b');
+	}
+	while ((*a)->top->data != lis[0])
+		ft_push(a, b, 'b');
+}
+
+void	ft_stack_big(t_stack **a, t_stack **b)
 {
 	int	*arr_stack;
 	int	*lis;
 	int	len; //lenght of the subsequence
+	int	i;
 
+	i = 0;
 	arr_stack = ft_stack_to_arr((*a)->top, (*a)->size);
 	lis = ft_lis(arr_stack, (*a)->size, &len);
+	ft_printf("len: %d\n", len);
+	while (lis[i])
+	{
+		ft_printf("lis[%d]: [%d]\n", i, lis[i]);
+		i++;
+	}
+	ft_lis_selection(a, b, lis, len);
 }

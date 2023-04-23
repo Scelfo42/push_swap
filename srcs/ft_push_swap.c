@@ -14,7 +14,7 @@
 
 void	*ft_malloc(size_t size)
 {
-	return (malloc(size));
+	return(malloc(size));
 }
 
 int	main(int argc, char **argv)

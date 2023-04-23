@@ -52,7 +52,7 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b);
 /* LOW STACK */
 void	ft_stack3(t_stack **stack);
 void	ft_stack_any(t_stack **a, t_stack **b);
-void	ft_stack_big(t_stack **a);//, t_stack **b);
+void	ft_stack_big(t_stack **a, t_stack **b);
 /* UTILS */
 int		ft_smallest(t_node *top);
 int		ft_biggest(t_node *top);
@@ -67,15 +67,14 @@ void	rr(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 /* FREE MEMORY */
 void	ft_free_argv(char **argv);
-void	ft_free_stack(t_stack **a);
-void	ft_free_world(t_stack **a, char **new_argv, bool flag);//, t_stack **b);
+void	ft_free_stack(t_stack **stack);
+void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag);
 /* PRINT THE STACK */
 void	ft_stack_print(t_stack *a, int argc);
 /* DEBUGGING */
 void	*ft_malloc(size_t size);
 /* LIS UTILS */
 int		*ft_stack_to_arr(t_node *top, int stack_size);
-void	ft_stack_big(t_stack **a);
 /* LIS */
 int		*ft_lis(int *arr_stack, int stack_size, int *len);
 

@@ -12,18 +12,18 @@
 
 #include "../header/ft_push_swap.h"
 
-void	ft_free_stack(t_stack **a)
+void	ft_free_stack(t_stack **stack)
 {
-	if ((*a)->size > 1)
+	if ((*stack)->size > 1)
 	{
-		while ((*a)->top->next)
+		while ((*stack)->top->next)
 		{
-			(*a)->top = (*a)->top->next;
-			free((*a)->top->prev);
+			(*stack)->top = (*stack)->top->next;
+			free((*stack)->top->prev);
 		}
 	}
-	free((*a)->top);
-	free(*a);
+	free((*stack)->top);
+	free(*stack);
 }
 
 void	ft_free_argv(char **argv)
@@ -36,10 +36,12 @@ void	ft_free_argv(char **argv)
 	free(argv);
 }
 
-void	ft_free_world(t_stack **a, char **new_argv, bool flag)//, t_stack **b)
+void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag)
 {
 	if (*a)
 		ft_free_stack(a);
+	if (*b)
+		ft_free_stack(b);
 	if (new_argv && flag == true)
 		ft_free_argv(new_argv);
 }
