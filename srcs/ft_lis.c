@@ -96,16 +96,10 @@ void	ft_stack_big(t_stack **a, t_stack **b)
 	int	*arr_stack;
 	int	*lis;
 	int	len; //lenght of the subsequence
-	int	i;
 
 	i = 0;
 	arr_stack = ft_stack_to_arr((*a)->top, (*a)->size);
 	lis = ft_lis(arr_stack, (*a)->size, &len);
-	ft_printf("len: %d\n", len);
-	while (lis[i])
-	{
-		ft_printf("lis[%d]: [%d]\n", i, lis[i]);
-		i++;
-	}
 	ft_lis_selection(a, b, lis, len);
+	ft_algo(a, b, lis);
 }

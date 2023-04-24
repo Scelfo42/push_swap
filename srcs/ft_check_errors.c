@@ -62,7 +62,7 @@ void	ft_check_duplicates(t_stack **a, char **new_argv, bool flag)
 		{
 			if (top->data == tmp->data)
 			{
-				ft_free_world(a, new_argv, flag);
+				ft_free_world(a, NULL, new_argv, flag);
 				ft_error_message(new_argv, false);
 			}
 			tmp = tmp->next;
