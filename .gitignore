@@ -4,3 +4,5 @@ push_swap
 **/*.a
 **/obj/
 **/lib/
+**/*.ini
+**/push_swap_visualizer

@@ -58,10 +58,10 @@ int		ft_smallest(t_node *top);
 int		ft_biggest(t_node *top);
 int		ft_find_pos_min(t_node *top, int *min);
 /* STACK OPERATIONS */
-void	ft_swap(t_stack **ab, char stack_name);
+void	ft_swap(t_stack **ab, char stack_name, bool if_print);
 void	ft_push(t_stack **from, t_stack **to, char stack_to_name);
-void	ft_rotate(t_stack **ab, char stack_name);
-void	ft_reverse_rotate(t_stack **ab, char stack_name);
+void	ft_rotate(t_stack **ab, char stack_name, bool if_print);
+void	ft_reverse_rotate(t_stack **ab, char stack_name, bool if_print);
 void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
@@ -77,5 +77,15 @@ void	*ft_malloc(size_t size);
 int		*ft_stack_to_arr(t_node *top, int stack_size);
 /* LIS */
 int		*ft_lis(int *arr_stack, int stack_size, int *len);
+void	ft_algo(t_stack **a, t_stack **b);
+int	ft_best_move(t_stack **a, t_stack **b);
+int	ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b);
+int	ft_best_combination_deco(int *mov_a, int *mov_b, int b_size);
+int	ft_best_combination(int	**copy_a, int **copy_b, int i);
+int	ft_take_max(int first, int second);
+int	ft_take_min(int first, int second);
+int	*ft_arrcpy(int *arr, int size);
+int	ft_mov_b_populate(int stack_size, int pos);
+int	ft_mov_a_populate(t_stack **a, int b_content, int a_size);
 
 #endif

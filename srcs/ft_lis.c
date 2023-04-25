@@ -36,6 +36,11 @@ int *ft_create_arr_lis(int *arr_stack, int *lis, int len, int size)
 	return (arr_lis);
 }
 
+void	ft_nothing()
+{
+	ft_printf("");
+}
+
 int	*ft_lis(int *arr_stack, int stack_size, int *len)
 {
 	int	*lis;
@@ -69,19 +74,20 @@ int	*ft_lis(int *arr_stack, int stack_size, int *len)
 		ft_printf("array lis index[%d]: %d\n", i, lis[i]);
 		i++;
 	}*/
+	ft_nothing();
 	return (ft_create_arr_lis(arr_stack, lis, *len, stack_size));
 }
 
 void	ft_lis_selection(t_stack **a, t_stack **b, int *lis, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (i < len)
+	while ((*a)->size > len)
 	{
 		if ((*a)->top->data == lis[i])
 		{
-			ft_rotate(a, 'a');
+			ft_rotate(a, 'a', true);
 			i++;
 		}
 		else
@@ -91,15 +97,41 @@ void	ft_lis_selection(t_stack **a, t_stack **b, int *lis, int len)
 		ft_push(a, b, 'b');
 }
 
+void	ft_go_back_min(t_stack **a)
+{
+	int		min;
+	t_node	*search;
+	int		half;
+
+	min = ft_smallest((*a)->top);
+	search = (*a)->top;
+	half = 0;
+	while (search->data != min)
+	{
+		search = search->next;
+		half++;
+	}
+	if (half > (*a)->size)
+	{
+		while ((*a)->top->data != min)
+			ft_reverse_rotate(a, 'a', true);
+	}
+	else
+	{
+		while ((*a)->top->data != min)
+			ft_rotate(a, 'a', true);
+	}
+}
+
 void	ft_stack_big(t_stack **a, t_stack **b)
 {
 	int	*arr_stack;
 	int	*lis;
 	int	len; //lenght of the subsequence
 
-	i = 0;
 	arr_stack = ft_stack_to_arr((*a)->top, (*a)->size);
 	lis = ft_lis(arr_stack, (*a)->size, &len);
 	ft_lis_selection(a, b, lis, len);
-	ft_algo(a, b, lis);
+	ft_algo(a, b);
+	ft_go_back_min(a);
 }
