@@ -80,7 +80,7 @@ int		*ft_lis(int *arr_stack, int stack_size, int *len);
 void	ft_algo(t_stack **a, t_stack **b);
 int	ft_best_move(t_stack **a, t_stack **b);
 int	ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b);
-int	ft_best_combination_deco(int *mov_a, int *mov_b, int b_size);
+int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size, int *orig_a, int *orig_b);
 int	ft_best_combination(int	**copy_a, int **copy_b, int i);
 int	ft_take_max(int first, int second);
 int	ft_take_min(int first, int second);

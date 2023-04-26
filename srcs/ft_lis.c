@@ -63,17 +63,9 @@ int	*ft_lis(int *arr_stack, int stack_size, int *len)
 				lis[j] = 1 + lis[i];
 			i++;
 		}
-		if (lis[j] > *len)
+		if (lis[j] > *len && lis[j] < 1000)
 			*len = lis[j];
 	}
-/*	ft_printf("total lis: %d\n", *len);
-	i = 0;
-	while (lis[i] != 0)
-	{
-		ft_printf("array stack[%d]: %d\n", i, arr_stack[i]);
-		ft_printf("array lis index[%d]: %d\n", i, lis[i]);
-		i++;
-	}*/
 	ft_nothing();
 	return (ft_create_arr_lis(arr_stack, lis, *len, stack_size));
 }
@@ -111,7 +103,7 @@ void	ft_go_back_min(t_stack **a)
 		search = search->next;
 		half++;
 	}
-	if (half > (*a)->size)
+	if (half > ((*a)->size / 2))
 	{
 		while ((*a)->top->data != min)
 			ft_reverse_rotate(a, 'a', true);
