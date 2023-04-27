@@ -15,30 +15,50 @@ int	*ft_stack_to_arr(t_node *top, int stack_size)
 	return (arr);
 }
 
-int *ft_create_arr_lis(int *arr_stack, int *lis, int len, int size)
+bool	ft_search_better(int *lis, int breakpoint, int index, int *arr_stack, int *arr_lis, int len)
+{
+	int	interested;
+	int	tmp_index;
+
+	interested = arr_stack[breakpoint];
+	while (breakpoint-- > 0)
+	{
+		tmp_index = index;
+		if (lis[breakpoint] == index && arr_stack[breakpoint] > interested)
+		{
+			while (arr_stack[breakpoint] < arr_lis[tmp_index] && tmp_index < len)
+				tmp_index++;
+			if (tmp_index == len)
+				return (true);
+			else
+				break ;
+		}
+	}
+	return (false);
+}
+
+int *ft_create_arr_lis(int *arr_stack, int *lis, int len, int stack_size)
 {
 	int	*arr_lis;
 	int	end;
+	int	size;
 
 	arr_lis = ft_calloc(len, sizeof(int));
 	end = len;
+	size = stack_size;
 	while (size-- > 0)
 	{
 		if (lis[size] == end)
-			arr_lis[--end] = arr_stack[size];
+		{
+			if (ft_search_better(lis, size, end, arr_stack, arr_lis, len) == false)
+				arr_lis[--end] = arr_stack[size];
+		}
 	}
-	/*while (arr_lis[end] != 0)
-	{
-		ft_printf("array lis[%d]: %d\n", end, arr_lis[end]);
-		end++;
-	}*/
+	/*i = -1;
+	while (arr_lis[++i] != 0)
+		ft_printf("array lis[%d]: %d\n", i, arr_lis[i]);*/
 	free(lis);
 	return (arr_lis);
-}
-
-void	ft_nothing()
-{
-	ft_printf("");
 }
 
 int	*ft_lis(int *arr_stack, int stack_size, int *len)
@@ -63,10 +83,9 @@ int	*ft_lis(int *arr_stack, int stack_size, int *len)
 				lis[j] = 1 + lis[i];
 			i++;
 		}
-		if (lis[j] > *len && lis[j] < 1000)
+		if (lis[j] > *len && lis[j] < stack_size)
 			*len = lis[j];
 	}
-	ft_nothing();
 	return (ft_create_arr_lis(arr_stack, lis, *len, stack_size));
 }
 

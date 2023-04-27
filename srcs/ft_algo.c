@@ -99,7 +99,7 @@ int	ft_best_combination(int	**copy_a, int **copy_b, int i)
 	return ((*copy_a)[i] + (*copy_b)[i]);
 }
 
-int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size, int *orig_a, int *orig_b)
+int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size)//, int *orig_a, int *orig_b)
 {
 	int *comb;
 	int	i;
@@ -113,16 +113,7 @@ int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size, int *orig_a, 
 	best_pos = 0;
 	while (++i < b_size)
 	{
-		if (comb[i] == comb[best_pos])
-		{
-			if (orig_a[i] != 0 && orig_b[i] != 0)
-			{
-				if (orig_a[best_pos] != 0 && orig_b[best_pos] != 0)
-			}
-			else
-				best_pos = i;
-		}
-		else if (comb[i] < comb[best_pos])
+		if (comb[i] < comb[best_pos])
 			best_pos = i;
 	}
 	free(copy_a);
@@ -172,7 +163,7 @@ int	ft_best_move(t_stack **a, t_stack **b)
 		mov_a[i] = ft_mov_a_populate(a, tmp->data, (*a)->size);
 		tmp = tmp->next;
 	}
-	i = ft_best_combination_deco(ft_arrcpy(mov_a, (*b)->size), ft_arrcpy(mov_b, (*b)->size), (*b)->size, mov_a, mov_b);
+	i = ft_best_combination_deco(ft_arrcpy(mov_a, (*b)->size), ft_arrcpy(mov_b, (*b)->size), (*b)->size);//, mov_a, mov_b);
 	i = ft_do_if_convenient(mov_a[i], mov_b[i], a, b);
 	free(mov_a);
 	free(mov_b);
@@ -194,5 +185,5 @@ void	ft_algo(t_stack **a, t_stack **b)
 			while (i++ < 0)
 				ft_reverse_rotate(b, 'b', true);
 		ft_push(b, a, 'a');
-	}	
+	}
 }
