@@ -1,104 +1,5 @@
 #include "../header/ft_push_swap.h"
 
-int	ft_min_on_top(t_node *top)
-{
-	int	i;
-	t_node *tmp;
-
-	i = 0;
-	tmp = top;
-	while (tmp->data != ft_smallest(top))
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
-}
-
-bool	ft_find_smaller(int stack_data, t_node *current)
-{
-	t_node	*tmp;
-
-	tmp = current->next;
-	while (tmp)
-	{
-		if (tmp->data > stack_data && tmp->data < current->data)
-			return (true);
-		tmp = tmp->next;
-	}
-	return (false);
-}
-
-int	ft_mov_a_populate(t_stack **a, int b_data, int a_size)
-{
-	t_node	*current;
-	int		following;
-
-	current = (*a)->top;
-	following = 0;
-	if (b_data > ft_biggest((*a)->top))
-		return (ft_mov_b_populate(a_size, ft_min_on_top(current)));
-	while (current)
-	{
-		if (b_data < current->data)
-		{
-			if (ft_find_smaller(b_data, current) == false)
-				break ;
-		}
-		current = current->next;
-		following++;
-	}
-	return (ft_mov_b_populate(a_size, following));
-}
-
-int	ft_mov_b_populate(int stack_size, int pos)
-{
-	if (pos > (stack_size / 2))
-		pos -= stack_size;
-	return (pos);
-}
-
-int	*ft_arrcpy(int *arr, int size)
-{
-	int	*new;
-	int	i;
-
-	new = ft_calloc(size, sizeof(int));
-	i = -1;
-	while (++i < size)
-		new[i] = arr[i];
-	return (new);
-}
-
-int	ft_take_min(int first, int second)
-{
-	if (first > second)
-		return (second);
-	return (first);
-}
-
-int	ft_take_max(int first, int second)
-{
-	if (first < 0)
-		first *= -1;
-	if (second < 0)
-		second *= -1;
-	if (first > second)
-		return (first);
-	return (second);
-}
-
-int	ft_best_combination(int	**copy_a, int **copy_b, int i)
-{
-	if (((*copy_a)[i] > 0 && (*copy_b)[i] > 0) || ((*copy_a)[i] < 0 && (*copy_b)[i] < 0))
-		return (ft_take_max((*copy_a)[i], (*copy_b)[i]));
-	if ((*copy_a)[i] < 0)
-		(*copy_a)[i] *= -1;
-	if ((*copy_b)[i] < 0)
-		(*copy_b)[i] *= -1;
-	return ((*copy_a)[i] + (*copy_b)[i]);
-}
-
 int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size)//, int *orig_a, int *orig_b)
 {
 	int *comb;
@@ -118,6 +19,7 @@ int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size)//, int *orig_
 	}
 	free(copy_a);
 	free(copy_b);
+	free(comb);
 	return (best_pos);
 }
 
@@ -144,40 +46,38 @@ int	ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b)
 	return (b_i);
 }
 
-int	ft_best_move(t_stack **a, t_stack **b)
+int	ft_best_move(t_stack **a, t_stack **b, t_lis *lis)
 {
-	int		*mov_a;
-	int		*mov_b;
 	int		i;
-	t_node	*tmp;
+	t_node	*b_tmp;
 
 	i = -1;
-	tmp = (*b)->top;
-	mov_a = ft_calloc((*b)->size, sizeof(int));
-	mov_b = ft_calloc((*b)->size, sizeof(int));
+	b_tmp = (*b)->top;
+	lis->mov_a = ft_calloc((*b)->size, sizeof(int));
+	lis->mov_b = ft_calloc((*b)->size, sizeof(int));
 	while (++i < (*b)->size)
-		mov_b[i] = ft_mov_b_populate((*b)->size, i);
+		lis->mov_b[i] = ft_mov_b_populate((*b)->size, i);
 	i = -1;
-	while (++i < (*b)->size && tmp != NULL)
+	while (++i < (*b)->size && b_tmp != NULL)
 	{
-		mov_a[i] = ft_mov_a_populate(a, tmp->data, (*a)->size);
-		tmp = tmp->next;
+		lis->mov_a[i] = ft_mov_a_populate((*a)->top, b_tmp->data, (*a)->size);
+		b_tmp = b_tmp->next;
 	}
-	i = ft_best_combination_deco(ft_arrcpy(mov_a, (*b)->size), ft_arrcpy(mov_b, (*b)->size), (*b)->size);//, mov_a, mov_b);
-	i = ft_do_if_convenient(mov_a[i], mov_b[i], a, b);
-	free(mov_a);
-	free(mov_b);
+	i = ft_best_combination_deco(ft_arrcpy(lis->mov_a, (*b)->size), ft_arrcpy(lis->mov_b, (*b)->size), (*b)->size);//, mov_a, mov_b); test with double moves!!
+	i = ft_do_if_convenient(lis->mov_a[i], lis->mov_b[i], a, b);
+	free(lis->mov_a);
+	free(lis->mov_b);
 	return (i);
 }
 
-void	ft_algo(t_stack **a, t_stack **b)
+void	ft_algo(t_stack **a, t_stack **b, t_lis *lis)
 {
 	int	i;
 
 	i = 0;
 	while ((*b)->top != NULL)
 	{
-		i = ft_best_move(a, b);
+		i = ft_best_move(a, b, lis);
 		if (i > 0)
 			while (i-- > 0)
 				ft_rotate(b, 'b', true);

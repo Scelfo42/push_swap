@@ -38,9 +38,9 @@ void	ft_free_argv(char **argv)
 
 void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag)
 {
-	if (*a)
+	if (a && *a)
 		ft_free_stack(a);
-	if (*b)
+	if (b && *b)
 		ft_free_stack(b);
 	if (new_argv && flag == true)
 		ft_free_argv(new_argv);

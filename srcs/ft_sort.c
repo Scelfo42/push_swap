@@ -30,5 +30,5 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
  	else
 		ft_stack_big(a, b);
 	//ft_stack_print(*a, (*a)->size);
-	//ft_free_world(a, b, new_argv, flag);
+	ft_free_world(a, b, new_argv, flag);
 }

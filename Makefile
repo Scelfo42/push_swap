@@ -28,7 +28,7 @@ LIB = libft.a
 
 SRCS_FILES =	ft_push_swap.c ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c \
 		ft_check_args.c ft_sort.c ft_free_all.c list_printer.c ft_double_moves.c \
-		ft_find_specific.c ft_lis.c ft_algo.c \
+		ft_find_specific.c ft_lis.c ft_lis_utils.c ft_algo.c ft_algo_utils.c ft_arrcpy.c ft_mov_arr_populate.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 

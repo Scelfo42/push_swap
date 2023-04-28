@@ -31,6 +31,15 @@ typedef struct s_stack
 	t_node	*bottom;
 }	t_stack;
 
+typedef struct s_lis
+{
+	int	*array;
+	int	len;
+	int	*stack_arr;
+	int	*mov_a;
+	int	*mov_b;
+}	t_lis;
+
 /* ERROR MESSAGE */
 void	ft_error_message(char **argv, bool flag);
 /* CHECKS */
@@ -62,6 +71,7 @@ void	ft_swap(t_stack **ab, char stack_name, bool if_print);
 void	ft_push(t_stack **from, t_stack **to, char stack_to_name);
 void	ft_rotate(t_stack **ab, char stack_name, bool if_print);
 void	ft_reverse_rotate(t_stack **ab, char stack_name, bool if_print);
+/* DOUBLE MOVES */
 void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
@@ -71,21 +81,27 @@ void	ft_free_stack(t_stack **stack);
 void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag);
 /* PRINT THE STACK */
 void	ft_stack_print(t_stack *a, int argc);
-/* DEBUGGING */
-void	*ft_malloc(size_t size);
+/* LIS */
+void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis);
+void	ft_go_back_min(t_stack **a);
+int		*ft_lis(t_lis *lis, int stack_size);
 /* LIS UTILS */
 int		*ft_stack_to_arr(t_node *top, int stack_size);
-/* LIS */
-int		*ft_lis(int *arr_stack, int stack_size, int *len);
-void	ft_algo(t_stack **a, t_stack **b);
-int	ft_best_move(t_stack **a, t_stack **b);
-int	ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b);
-int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size);//, int *orig_a, int *orig_b);
-int	ft_best_combination(int	**copy_a, int **copy_b, int i);
-int	ft_take_max(int first, int second);
+bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index);
+int 	*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size);
+/* ALGORITHM */
+int		ft_best_combination_deco(int *copy_a, int *copy_b, int b_size);//, int *orig_a, int *orig_b);
+int		ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b);
+int		ft_best_move(t_stack **a, t_stack **b, t_lis *lis);
+void	ft_algo(t_stack **a, t_stack **b, t_lis *lis);
+/* ALGORITHM UTILS */
 int	ft_take_min(int first, int second);
+int	ft_take_max(int first, int second);
+int	ft_best_combination(int	**copy_a, int **copy_b, int i);
+/* ARRAY COPY*/
 int	*ft_arrcpy(int *arr, int size);
+/* MOV_ARR_POPULATORS */
 int	ft_mov_b_populate(int stack_size, int pos);
-int	ft_mov_a_populate(t_stack **a, int b_content, int a_size);
+int	ft_mov_a_populate(t_node *top, int b_content, int a_size);
 
 #endif
