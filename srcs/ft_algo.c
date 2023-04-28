@@ -81,7 +81,7 @@ int	ft_take_max(int first, int second)
 {
 	if (first < 0)
 		first *= -1;
-	else if (second < 0)
+	if (second < 0)
 		second *= -1;
 	if (first > second)
 		return (first);
