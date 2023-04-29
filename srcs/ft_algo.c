@@ -12,9 +12,24 @@ int	*ft_arrcpy(int *arr, int size)
 	return(new_arr);
 }
 
-/*int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
+int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
 {
-}*/
+	int	i;
+
+	i = pos;
+	while (++i < stack_size)
+	{
+		if (lis->combination[i] == lis->combination[pos])
+		{
+			if (lis->mov_a[pos] == 0 || lis->mov_b[pos] == 0)
+			{
+				if (lis->mov_a[i] != 0 && lis->mov_b[i] != 0)
+					return (i);
+			}
+		}
+	}
+	return (pos);
+}
 
 int	ft_best_combination_deco(t_lis *lis, int stack_size)//, int *orig_a, int *orig_b)
 {
@@ -32,7 +47,7 @@ int	ft_best_combination_deco(t_lis *lis, int stack_size)//, int *orig_a, int *or
 		if (lis->combination[i] < lis->combination[best_pos])
 			best_pos = i;
 	}
-//	best_pos = ft_search_for_better(lis, stack_size, best_pos);
+	best_pos = ft_search_for_better(lis, stack_size, best_pos);
 	free(lis->combination);
 	return (best_pos);
 }

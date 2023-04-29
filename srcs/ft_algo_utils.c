@@ -1,14 +1,5 @@
 #include "../header/ft_push_swap.h"
 
-int	ft_difference_with_fabs(int first, int second)
-{
-	if (first < 0)
-		first *= -1;
-	if (second < 0)
-		second *= -1;
-	return (first - second);
-}
-
 int	ft_take_min(int first, int second)
 {
 	if (first > second)
@@ -36,4 +27,11 @@ int	ft_best_combination(int	a, int b)
 	if (b < 0)
 		b *= -1;
 	return (a + b);
+}
+
+int	ft_fabs(int nbr)
+{
+	if (nbr < 0)
+		return (nbr * -1);
+	return (nbr);
 }

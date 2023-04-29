@@ -96,10 +96,10 @@ int		ft_do_if_possible(int a_i, int b_i, t_stack **a, t_stack **b);
 int		ft_best_move(t_stack **a, t_stack **b, t_lis *lis);
 void	ft_algo(t_stack **a, t_stack **b, t_lis *lis);
 /* ALGORITHM UTILS */
-int	ft_difference_with_fabs(int first, int second);
 int		ft_take_min(int first, int second);
 int		ft_take_max(int first, int second);
 int		ft_best_combination(int	a, int b);
+int		ft_fabs(int nbr);
 /* MOV_ARR_POPULATORS */
 int		ft_mov_b_populate(int stack_size, int pos);
 int		ft_mov_a_populate(t_node *top, int b_content, int a_size);
