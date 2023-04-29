@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:05:19 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/10 12:19:17 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/04/29 13:14:21 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,10 @@ long int	ft_atol(char *str); //atoi long
 int			ft_matlen(char **argv); //matrix length
 int			ft_countstr(char *s, char c); //for the split
 /* FREE VARIATION */
-void	*ft_free_void(void **ptr);
-void	**ft_free_mat(char ***ptr_mat);
-void	*ft_malloc(size_t size);
+void		*ft_free_void(void **ptr);
+void		**ft_free_mat(char ***ptr_mat);
+void		*ft_malloc(size_t size);
+/* STRCPY VARIATION */
+int			*ft_arrcpy(int *arr, int size);
 
 #endif

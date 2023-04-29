@@ -38,6 +38,7 @@ typedef struct s_lis
 	int	*stack_arr;
 	int	*mov_a;
 	int	*mov_b;
+	int	*combination;
 }	t_lis;
 
 /* ERROR MESSAGE */
@@ -90,18 +91,17 @@ int		*ft_stack_to_arr(t_node *top, int stack_size);
 bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index);
 int 	*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size);
 /* ALGORITHM */
-int		ft_best_combination_deco(int *copy_a, int *copy_b, int b_size);//, int *orig_a, int *orig_b);
-int		ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b);
+int		ft_best_combination_deco(t_lis *lis, int b_size);//, int *orig_a, int *orig_b);
+int		ft_do_if_possible(int a_i, int b_i, t_stack **a, t_stack **b);
 int		ft_best_move(t_stack **a, t_stack **b, t_lis *lis);
 void	ft_algo(t_stack **a, t_stack **b, t_lis *lis);
 /* ALGORITHM UTILS */
-int	ft_take_min(int first, int second);
-int	ft_take_max(int first, int second);
-int	ft_best_combination(int	**copy_a, int **copy_b, int i);
-/* ARRAY COPY*/
-int	*ft_arrcpy(int *arr, int size);
+int	ft_difference_with_fabs(int first, int second);
+int		ft_take_min(int first, int second);
+int		ft_take_max(int first, int second);
+int		ft_best_combination(int	a, int b);
 /* MOV_ARR_POPULATORS */
-int	ft_mov_b_populate(int stack_size, int pos);
-int	ft_mov_a_populate(t_node *top, int b_content, int a_size);
+int		ft_mov_b_populate(int stack_size, int pos);
+int		ft_mov_a_populate(t_node *top, int b_content, int a_size);
 
 #endif

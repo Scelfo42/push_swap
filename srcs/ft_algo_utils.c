@@ -1,5 +1,14 @@
 #include "../header/ft_push_swap.h"
 
+int	ft_difference_with_fabs(int first, int second)
+{
+	if (first < 0)
+		first *= -1;
+	if (second < 0)
+		second *= -1;
+	return (first - second);
+}
+
 int	ft_take_min(int first, int second)
 {
 	if (first > second)
@@ -18,13 +27,13 @@ int	ft_take_max(int first, int second)
 	return (second);
 }
 
-int	ft_best_combination(int	**copy_a, int **copy_b, int i)
+int	ft_best_combination(int	a, int b)
 {
-	if (((*copy_a)[i] > 0 && (*copy_b)[i] > 0) || ((*copy_a)[i] < 0 && (*copy_b)[i] < 0))
-		return (ft_take_max((*copy_a)[i], (*copy_b)[i]));
-	if ((*copy_a)[i] < 0)
-		(*copy_a)[i] *= -1;
-	if ((*copy_b)[i] < 0)
-		(*copy_b)[i] *= -1;
-	return ((*copy_a)[i] + (*copy_b)[i]);
+	if ((a > 0 && b > 0) || (a < 0 && b < 0))
+		return (ft_take_max(a, b));
+	if (a < 0)
+		a *= -1;
+	if (b < 0)
+		b *= -1;
+	return (a + b);
 }

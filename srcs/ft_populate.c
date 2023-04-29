@@ -16,7 +16,7 @@ t_node	*ft_init_node(int data)
 {
 	t_node	*new_node;
 
-	new_node = ft_malloc(sizeof(t_node));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (0);
 	new_node->data = data;

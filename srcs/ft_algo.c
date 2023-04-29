@@ -1,29 +1,43 @@
 #include "../header/ft_push_swap.h"
 
-int	ft_best_combination_deco(int *copy_a, int *copy_b, int b_size)//, int *orig_a, int *orig_b)
+int	*ft_arrcpy(int *arr, int size)
 {
-	int *comb;
+	int *new_arr;
+	int	i;
+
+	new_arr = ft_calloc(size, sizeof(int));
+	i = -1;
+	while (++i < size)
+		new_arr[i] = arr[i];
+	return(new_arr);
+}
+
+/*int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
+{
+}*/
+
+int	ft_best_combination_deco(t_lis *lis, int stack_size)//, int *orig_a, int *orig_b)
+{
 	int	i;
 	int	best_pos;
 
-	comb = ft_calloc(b_size, sizeof(int));
+	lis->combination = ft_calloc(stack_size, sizeof(int));
 	i = -1;
-	while (++i < b_size)
-		comb[i] = ft_best_combination(&copy_a, &copy_b, i);
+	while (++i < stack_size)
+		lis->combination[i] = ft_best_combination(lis->mov_a[i], lis->mov_b[i]);
 	i = -1;
 	best_pos = 0;
-	while (++i < b_size)
+	while (++i < stack_size)
 	{
-		if (comb[i] < comb[best_pos])
+		if (lis->combination[i] < lis->combination[best_pos])
 			best_pos = i;
 	}
-	free(copy_a);
-	free(copy_b);
-	free(comb);
+//	best_pos = ft_search_for_better(lis, stack_size, best_pos);
+	free(lis->combination);
 	return (best_pos);
 }
 
-int	ft_do_if_convenient(int a_i, int b_i, t_stack **a, t_stack **b)
+int	ft_do_if_possible(int a_i, int b_i, t_stack **a, t_stack **b)
 {
 	while (a_i < 0 && b_i < 0)
 	{
@@ -63,8 +77,8 @@ int	ft_best_move(t_stack **a, t_stack **b, t_lis *lis)
 		lis->mov_a[i] = ft_mov_a_populate((*a)->top, b_tmp->data, (*a)->size);
 		b_tmp = b_tmp->next;
 	}
-	i = ft_best_combination_deco(ft_arrcpy(lis->mov_a, (*b)->size), ft_arrcpy(lis->mov_b, (*b)->size), (*b)->size);//, mov_a, mov_b); test with double moves!!
-	i = ft_do_if_convenient(lis->mov_a[i], lis->mov_b[i], a, b);
+	i = ft_best_combination_deco(lis, (*b)->size);
+	i = ft_do_if_possible(lis->mov_a[i], lis->mov_b[i], a, b);
 	free(lis->mov_a);
 	free(lis->mov_b);
 	return (i);
