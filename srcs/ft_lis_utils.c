@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lis_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/01 15:30:08 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/05/01 15:31:44 by cscelfo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/ft_push_swap.h"
 
 int	*ft_stack_to_arr(t_node *stack_top, int stack_size)
@@ -26,9 +38,11 @@ bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index)
 	while (breakpoint-- > 0)
 	{
 		tmp_index = index;
-		if (tmp_lis[breakpoint] == index && lis->stack_arr[breakpoint] > interested)
+		if ((tmp_lis[breakpoint] == index)
+			&& (lis->stack_arr[breakpoint] > interested))
 		{
-			while (lis->stack_arr[breakpoint] < lis->array[tmp_index] && tmp_index < lis->len)
+			while ((lis->stack_arr[breakpoint] < lis->array[tmp_index])
+				&& (tmp_index < lis->len))
 				tmp_index++;
 			if (tmp_index == lis->len)
 				return (true);
@@ -39,7 +53,7 @@ bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index)
 	return (false);
 }
 
-int *ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size)
+int	*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size)
 {
 	int	index;
 

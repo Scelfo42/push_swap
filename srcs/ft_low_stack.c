@@ -39,7 +39,7 @@ void	ft_stack_any(t_stack **a, t_stack **b)
 		}
 		ft_push(a, b, 'b');
 	}
-	if (!ft_check_order(a, false))
+	if (!ft_check_order(a))
 		ft_stack3(a);
 	while ((*b)->size != 0)
 		ft_push(b, a, 'a');

@@ -6,13 +6,13 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:30:19 by cscelfo           #+#    #+#             */
-/*   Updated: 2022/11/17 17:08:45 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:18:55 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fl_header/ft_first_layer.h"
 
-static char *ft_char_to_str(char c)
+static char	*ft_char_to_str(char c)
 {
 	char	*str;
 

@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_double_moves.c                                  :+:      :+:    :+:   */
+/*   ft_push_swap_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 15:42:37 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/05/01 15:42:38 by cscelfo          ###   ########.fr       */
+/*   Created: 2023/05/01 17:22:01 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/05/01 17:22:08 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_push_swap.h"
+#ifndef FT_PUSH_SWAP_BONUS_H
+# define FT_PUSH_SWAP_BONUS_H
 
-void	ss(t_stack **a, t_stack **b)
-{
-	ft_swap(a, 'a', false);
-	ft_swap(b, 'b', false);
-	ft_printf("ss\n");
-}
-
-void	rr(t_stack **a, t_stack **b)
-{
-	ft_rotate(a, 'a', false);
-	ft_rotate(b, 'b', false);
-	ft_printf("rr\n");
-}
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	ft_reverse_rotate(a, 'a', false);
-	ft_reverse_rotate(b, 'b', false);
-	ft_printf("rrr\n");
-}
+#include "ft_push_swap.h"

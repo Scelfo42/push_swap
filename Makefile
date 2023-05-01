@@ -1,12 +1,14 @@
 NAME = push_swap
 
+CHECKER = checker
+
 RM_DIR = rm -rf
 
 CC = clang
 
 DEBUG_FLAG = -g
 
-CFLAGS = -Wall -Wextra -Werror $(DEBUG_FLAG) -gdwarf-4
+CFLAGS = -Wall -Wextra -Werror $(DEBUG_FLAG)
 
 OLD_PROJ = projects
 
@@ -20,19 +22,29 @@ OLD_PROJ_DIR = first_layer
 
 SRCS_DIR = srcs
 
+BONUS_SRCS_DIR = bonus_srcs
+
 OBJ_DIR = obj
+
+BONUS_OBJ_DIR = bonus_obj
 
 LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
 SRCS_FILES =	ft_push_swap.c ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c \
-		ft_check_args.c ft_sort.c ft_free_all.c list_printer.c ft_double_moves.c \
-		ft_find_specific.c ft_lis.c ft_lis_utils.c ft_algo.c ft_algo_utils.c ft_mov_arr_populate.c \
+				ft_check_args.c ft_sort.c ft_free_all.c ft_double_moves.c \
+				ft_find_specific.c ft_lis.c ft_lis_utils.c ft_algo.c ft_algo_utils.c ft_mov_arr_populate.c \
+
+BONUS_SRCS_FILES = ft_checker.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 
 O_SRCS = $(addprefix $(OBJ_DIR)/, $(SRCS_FILES:.c=.o))
+
+BONUS_SRCS = $(addprefix $(BONUS_SRCS_DIR)/, $(BONUS_SRCS_FILES))
+
+BONUS_O_SRCS = $(addprefix $(BONUS_OBJ_DIR)/, $(BONUS_SRCS_FILES:.c=.o))
 
 GREY            = \033[0;30m
 RED             = \033[0;31m
@@ -68,6 +80,11 @@ fclean: clean
 re: fclean all
 	clear
 
+bonus:
+	$(MAKE) -C projects all
+	$(CC) $(CFLAGS) $(BONUS_O_SRCS) $(LIB_DIR)/$(LIB) -o $(CHECKER)
+	clear
+
 push:
 	git add .
 	@echo "$(RED)Adding all changes..."
@@ -87,5 +104,5 @@ push:
 norm:
 	norminette *
 
-.PHONY: all clean fclean re push norm
+.PHONY: all clean fclean re bonus push norm
 .SILENT:

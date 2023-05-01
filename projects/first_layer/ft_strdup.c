@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:44:52 by cscelfo           #+#    #+#             */
-/*   Updated: 2022/11/17 19:25:14 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:20:30 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	ft_memcpy(new_s, s, s_len);
 	if (!*new_s)
-		ft_free_char(&new_s);
+		ft_free_void((void **)&new_s);
 	return (new_s);
 }
 /*

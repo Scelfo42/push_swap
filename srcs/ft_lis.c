@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lis.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/01 15:42:45 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/05/01 15:44:56 by cscelfo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/ft_push_swap.h"
 
 void	ft_go_back_min(t_stack **a)
@@ -75,23 +87,22 @@ int	*ft_lis(t_lis *lis, int stack_size)
 	while (++i < stack_size)
 		tmp_lis[i] = 1;
 	i = 0;
-	lis->len = 1;
 	while (i < stack_size)
 	{
 		j = i + 1;
 		i = 0;
 		while (i < j)
 		{
-			if (lis->stack_arr[i] < lis->stack_arr[j] && tmp_lis[j] <= tmp_lis[i])
+			if ((lis->stack_arr[i] < lis->stack_arr[j])
+				&& (tmp_lis[j] <= tmp_lis[i]))
 				tmp_lis[j] = tmp_lis[i] + 1;
 			i++;
 		}
 		if (tmp_lis[j] > lis->len && tmp_lis[j] < stack_size)
 			lis->len = tmp_lis[j];
 	}
-	lis->array = ft_clean_lis_array(lis, tmp_lis, stack_size);
 	free(tmp_lis);
-	return (lis->array);
+	return (ft_clean_lis_array(lis, tmp_lis, stack_size));
 }
 
 void	ft_stack_big(t_stack **a, t_stack **b)
@@ -99,6 +110,7 @@ void	ft_stack_big(t_stack **a, t_stack **b)
 	t_lis	*lis;
 
 	lis = (t_lis *)malloc(sizeof(t_lis));
+	lis->len = 1;
 	lis->stack_arr = ft_stack_to_arr((*a)->top, (*a)->size);
 	lis->array = ft_lis(lis, (*a)->size);
 	ft_lis_selection(a, b, lis);

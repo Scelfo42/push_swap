@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:11:33 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 12:25:57 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:34:41 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag)
 	if (new_argv && flag == true)
 		ft_free_argv(new_argv);
 }
-

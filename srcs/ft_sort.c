@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 11:16:09 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:35:12 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 {
-	if (ft_check_order(a, true) == true)
+	if (ft_check_order(a) == true)
 	{
-		//ft_stack_print(*a, (*a)->size);
-		ft_free_world(a, NULL, new_argv, flag);
+		ft_free_world(a, b, new_argv, flag);
 		exit(0);
 	}
 	(*b)->size = 0;
@@ -27,8 +26,7 @@ void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 		ft_stack3(a);
 	else if ((*a)->size < 10)
 		ft_stack_any(a, b);
- 	else
+	else
 		ft_stack_big(a, b);
-	//ft_stack_print(*a, (*a)->size);
 	ft_free_world(a, b, new_argv, flag);
 }

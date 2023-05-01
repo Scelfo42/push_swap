@@ -6,13 +6,13 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:13:44 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 12:24:55 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:38:00 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
 
-bool	ft_check_order(t_stack **a, bool msg)
+bool	ft_check_order(t_stack **a)
 {
 	t_node	*previous;
 	t_node	*following;
@@ -23,14 +23,12 @@ bool	ft_check_order(t_stack **a, bool msg)
 		following = (*a)->top->next;
 		while (following)
 		{
-			if (previous->data > following->data) //se trova il successivo maggiore, non è in ordine
+			if (previous->data > following->data)
 				return (false);
-			previous = following; //scorri
-			following = following->next; //scorri
+			previous = following;
+			following = following->next;
 		}
 	}
-	if (msg == true)
-		ft_printf("Stack already correctly ordered\n");
 	return (true);
 }
 
@@ -52,8 +50,7 @@ void	ft_check_intentions(char **argv)
 	}
 	else
 		ft_error_message(argv, true);
-	return;
-	
+	return ;
 }
 
 int	ft_select_args(int argc, char **argv, char ***new_argv, bool *flag)

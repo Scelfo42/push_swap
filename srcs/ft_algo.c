@@ -1,34 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_algo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/01 15:32:04 by cscelfo           #+#    #+#             */
+/*   Updated: 2023/05/01 15:33:23 by cscelfo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/ft_push_swap.h"
 
 int	*ft_arrcpy(int *arr, int size)
 {
-	int *new_arr;
+	int	*new_arr;
 	int	i;
 
 	new_arr = ft_calloc(size, sizeof(int));
 	i = -1;
 	while (++i < size)
 		new_arr[i] = arr[i];
-	return(new_arr);
-}
-
-int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
-{
-	int	i;
-
-	i = pos;
-	while (++i < stack_size)
-	{
-		if (lis->combination[i] == lis->combination[pos])
-		{
-			if (lis->mov_a[pos] == 0 || lis->mov_b[pos] == 0)
-			{
-				if (lis->mov_a[i] != 0 && lis->mov_b[i] != 0)
-					return (i);
-			}
-		}
-	}
-	return (pos);
+	return (new_arr);
 }
 
 int	ft_best_combination_deco(t_lis *lis, int stack_size)

@@ -6,16 +6,11 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:24:59 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/13 12:21:17 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/01 15:38:22 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
-
-void	*ft_malloc(size_t size)
-{
-	return(malloc(size));
-}
 
 int	main(int argc, char **argv)
 {
