@@ -45,6 +45,25 @@ void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis)
 		ft_push(a, b, 'b');
 }
 
+void	ft_lis_selection_b(t_stack **a, t_stack **b, t_lis *lis)
+{
+	int	i;
+
+	i = 0;
+	while ((*b)->size > lis->len)
+	{
+		if ((*b)->top->data == lis->array[i])
+		{
+			ft_rotate(b, 'b', true);
+			i++;
+		}
+		else
+			ft_push(b, a, 'a');
+	}
+	while ((*b)->top->data != lis->array[0])
+		ft_push(b, a, 'a');
+}
+
 int	*ft_lis(t_lis *lis, int stack_size)
 {
 	int	*tmp_lis;

@@ -3,13 +3,13 @@
 int	ft_min_on_top(t_node *top)
 {
 	int	i;
-	t_node *tmp;
+	int	min;
 
 	i = 0;
-	tmp = top;
-	while (tmp->data != ft_smallest(top))
+	min = ft_smallest(top);
+	while (top->data != min)
 	{
-		tmp = tmp->next;
+		top = top->next;
 		i++;
 	}
 	return (i);

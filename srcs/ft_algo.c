@@ -31,7 +31,7 @@ int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
 	return (pos);
 }
 
-int	ft_best_combination_deco(t_lis *lis, int stack_size)//, int *orig_a, int *orig_b)
+int	ft_best_combination_deco(t_lis *lis, int stack_size)
 {
 	int	i;
 	int	best_pos;
