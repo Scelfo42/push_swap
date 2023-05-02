@@ -14,4 +14,5 @@
 
 int	main(int argc, char **argv)
 {
+	t_stack *a; //??
 }

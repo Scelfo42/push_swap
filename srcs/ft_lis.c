@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:42:45 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/05/01 15:44:56 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:01:07 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,6 @@ void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis)
 		ft_push(a, b, 'b');
 }
 
-void	ft_lis_selection_b(t_stack **a, t_stack **b, t_lis *lis)
-{
-	int	i;
-
-	i = 0;
-	while ((*b)->size > lis->len)
-	{
-		if ((*b)->top->data == lis->array[i])
-		{
-			ft_rotate(b, 'b', true);
-			i++;
-		}
-		else
-			ft_push(b, a, 'a');
-	}
-	while ((*b)->top->data != lis->array[0])
-		ft_push(b, a, 'a');
-}
-
 int	*ft_lis(t_lis *lis, int stack_size)
 {
 	int	*tmp_lis;
@@ -90,19 +71,19 @@ int	*ft_lis(t_lis *lis, int stack_size)
 	while (i < stack_size)
 	{
 		j = i + 1;
-		i = 0;
-		while (i < j)
+		i = -1;
+		while (++i < j)
 		{
-			if ((lis->stack_arr[i] < lis->stack_arr[j])
+			if ((lis->stack_arr[i] < lis->stack_arr[j]) \
 				&& (tmp_lis[j] <= tmp_lis[i]))
 				tmp_lis[j] = tmp_lis[i] + 1;
-			i++;
 		}
 		if (tmp_lis[j] > lis->len && tmp_lis[j] < stack_size)
 			lis->len = tmp_lis[j];
 	}
+	lis->array = ft_clean_lis_array(lis, tmp_lis, stack_size);
 	free(tmp_lis);
-	return (ft_clean_lis_array(lis, tmp_lis, stack_size));
+	return (lis->array);
 }
 
 void	ft_stack_big(t_stack **a, t_stack **b)

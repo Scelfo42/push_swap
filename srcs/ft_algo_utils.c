@@ -19,7 +19,7 @@ int	ft_search_for_better(t_lis *lis, int stack_size, int pos)
 	i = pos;
 	while (++i < stack_size)
 	{
-		if ((lis->combination[i] == lis->combination[pos])
+		if ((lis->combination[i] == lis->combination[pos]) \
 			&& (lis->mov_a[pos] == 0 || lis->mov_b[pos] == 0))
 			if (lis->mov_a[i] != 0 && lis->mov_b[i] != 0)
 				return (i);

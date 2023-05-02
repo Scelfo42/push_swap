@@ -38,10 +38,10 @@ bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index)
 	while (breakpoint-- > 0)
 	{
 		tmp_index = index;
-		if ((tmp_lis[breakpoint] == index)
+		if ((tmp_lis[breakpoint] == index) \
 			&& (lis->stack_arr[breakpoint] > interested))
 		{
-			while ((lis->stack_arr[breakpoint] < lis->array[tmp_index])
+			while ((lis->stack_arr[breakpoint] < lis->array[tmp_index]) \
 				&& (tmp_index < lis->len))
 				tmp_index++;
 			if (tmp_index == lis->len)
