@@ -12,15 +12,15 @@
 
 #include "../header/ft_push_swap.h"
 
-bool	ft_check_order(t_stack **a)
+bool	ft_check_order(t_stack *a)
 {
 	t_node	*previous;
 	t_node	*following;
 
-	if ((*a)->size > 1)
+	if (a->size > 1)
 	{
-		previous = (*a)->top;
-		following = (*a)->top->next;
+		previous = a->top;
+		following = a->top->next;
 		while (following)
 		{
 			if (previous->data > following->data)

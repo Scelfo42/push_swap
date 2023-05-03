@@ -49,13 +49,13 @@ int	ft_do_if_possible(int a_i, int b_i, t_stack **a, t_stack **b)
 {
 	while (a_i < 0 && b_i < 0)
 	{
-		rrr(a, b);
+		rrr(a, b, true);
 		a_i++;
 		b_i++;
 	}
 	while (a_i > 0 && b_i > 0)
 	{
-		rr(a, b);
+		rr(a, b, true);
 		a_i--;
 		b_i--;
 	}
@@ -106,6 +106,6 @@ void	ft_algo(t_stack **a, t_stack **b, t_lis *lis)
 		else
 			while (i++ < 0)
 				ft_reverse_rotate(b, 'b', true);
-		ft_push(b, a, 'a');
+		ft_push(b, a, 'a', true);
 	}
 }

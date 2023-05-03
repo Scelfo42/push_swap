@@ -97,8 +97,7 @@ char		**ft_split(char *s, char c);
 /*			GET_NEXT_LINE			*/
 /* GET IT */
 char		*get_next_line(int fd);
-/* FREE IT */
-void		*ft_free_char(char **ptr);
+char		*get_next_line_bonus(int fd);
 /* MANAGE STRINGS */
 char		*ft_cpy(char *dest, char *tmp, char *source, size_t start);
 char		*join_buf_to_heap(char *dst, char *src, ssize_t byte, size_t q_mem);

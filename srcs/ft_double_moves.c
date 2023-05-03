@@ -12,23 +12,26 @@
 
 #include "../header/ft_push_swap.h"
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, bool flag)
 {
 	ft_swap(a, 'a', false);
 	ft_swap(b, 'b', false);
-	ft_printf("ss\n");
+	if (flag == true)
+		ft_printf("ss\n");
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, bool flag)
 {
 	ft_rotate(a, 'a', false);
 	ft_rotate(b, 'b', false);
-	ft_printf("rr\n");
+	if (flag == true)
+		ft_printf("rr\n");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, bool flag)
 {
 	ft_reverse_rotate(a, 'a', false);
 	ft_reverse_rotate(b, 'b', false);
-	ft_printf("rrr\n");
+	if (flag == true)
+		ft_printf("rrr\n");
 }

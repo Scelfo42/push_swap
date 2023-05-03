@@ -14,7 +14,7 @@
 
 void	ft_sort(t_stack **a, char **new_argv, bool flag, t_stack **b)
 {
-	if (ft_check_order(a) == true)
+	if (ft_check_order(*a) == true)
 	{
 		ft_free_world(a, b, new_argv, flag);
 		exit(0);

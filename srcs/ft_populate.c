@@ -84,5 +84,4 @@ void	ft_populate(t_stack **a, int new_argc, char **new_argv, bool flag)
 		(*a)->size++;
 		i++;
 	}
-	ft_check_duplicates(a, new_argv, flag);
 }

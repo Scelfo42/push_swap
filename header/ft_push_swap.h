@@ -43,8 +43,8 @@ typedef struct s_lis
 void	ft_error_message(char **argv, bool flag);
 /* CHECKS */
 void	ft_check_errors(int new_argc, char **argv, bool flag);
-void	ft_check_duplicates(t_stack **a, char **new_argv, bool flag);
-bool	ft_check_order(t_stack **a);
+void	ft_check_duplicates(t_stack **a, t_stack **b, char **new_argv, bool f);
+bool	ft_check_order(t_stack *a);
 void	ft_check_intentions(char **argv);
 /* SPLIT UTILS */
 int		ft_select_args(int argc, char **argv, char ***new_argv, bool *flag);
@@ -67,13 +67,13 @@ int		ft_biggest(t_node *top);
 int		ft_find_pos_min(t_node *top, int *min);
 /* STACK OPERATIONS */
 void	ft_swap(t_stack **ab, char stack_name, bool if_print);
-void	ft_push(t_stack **from, t_stack **to, char stack_to_name);
+void	ft_push(t_stack **from, t_stack **to, char stack_to_name, bool flag);
 void	ft_rotate(t_stack **ab, char stack_name, bool if_print);
 void	ft_reverse_rotate(t_stack **ab, char stack_name, bool if_print);
 /* DOUBLE MOVES */
-void	ss(t_stack **a, t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	ss(t_stack **a, t_stack **b, bool flag);
+void	rr(t_stack **a, t_stack **b, bool flag);
+void	rrr(t_stack **a, t_stack **b, bool flag);
 /* FREE MEMORY */
 void	ft_free_argv(char **argv);
 void	ft_free_stack(t_stack **stack);

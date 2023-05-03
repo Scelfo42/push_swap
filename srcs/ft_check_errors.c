@@ -32,10 +32,10 @@ void	ft_check_errors(int new_argc, char **new_argv, bool flag)
 	while (ac_i < new_argc && new_argv[ac_i])
 	{
 		av_i = 0;
+		if (new_argv[ac_i][av_i] == '-' || new_argv[ac_i][av_i] == '+')
+			av_i++;
 		while (new_argv[ac_i][av_i])
 		{
-			if (new_argv[ac_i][av_i] == '-' || new_argv[ac_i][av_i] == '+')
-				av_i++;
 			if (ft_isdigit(new_argv[ac_i][av_i]) == 0)
 				ft_error_message(new_argv, flag);
 			av_i++;
@@ -48,7 +48,7 @@ void	ft_check_errors(int new_argc, char **new_argv, bool flag)
 	}
 }
 
-void	ft_check_duplicates(t_stack **a, char **new_argv, bool flag)
+void	ft_check_duplicates(t_stack **a, t_stack **b, char **new_argv, bool f)
 {
 	t_node	*tmp;
 	t_node	*top;
@@ -62,7 +62,7 @@ void	ft_check_duplicates(t_stack **a, char **new_argv, bool flag)
 		{
 			if (top->data == tmp->data)
 			{
-				ft_free_world(a, NULL, new_argv, flag);
+				ft_free_world(a, b, new_argv, f);
 				ft_error_message(new_argv, false);
 			}
 			tmp = tmp->next;

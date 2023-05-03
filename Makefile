@@ -32,7 +32,7 @@ LIB_DIR = $(OLD_PROJ)/lib
 
 LIB = libft.a
 
-SRCS_FILES =	ft_push_swap.c ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c \
+SRCS_FILES =	ft_populate.c ft_check_errors.c ft_low_stack.c ft_moves.c \
 				ft_check_args.c ft_sort.c ft_free_all.c ft_double_moves.c \
 				ft_find_specific.c ft_lis.c ft_lis_utils.c ft_algo.c ft_algo_utils.c ft_mov_arr_populate.c \
 
@@ -59,30 +59,36 @@ $(OBJ_DIR)/%.o : $(SRCS_DIR)/%.c $(DEPS)
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_1) -I $(HEADER_2)
 
+$(BONUS_OBJ_DIR)/%.o : $(BONUS_SRCS_DIR)/%.c $(DEPS)
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_1) -I $(HEADER_2)
+
 all: $(NAME)
 
 $(NAME): $(SRCS) $(O_SRCS)
 	$(MAKE) -C projects all 
-	$(CC) $(CFLAGS) $(O_SRCS) $(LIB_DIR)/$(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(O_SRCS) $(SRCS_DIR)/ft_push_swap.c $(LIB_DIR)/$(LIB) -o $(NAME)
+	clear
+
+bonus: all $(BONUS_SRCS) $(BONUS_O_SRCS)
+	$(CC) $(CFLAGS) $(O_SRCS) $(BONUS_O_SRCS) $(LIB_DIR)/$(LIB) -o $(CHECKER)
 	clear
 
 clean:
 	$(MAKE) -C projects clean
 	$(RM_DIR) $(OBJ_DIR)/
+	$(RM_DIR) $(BONUS_OBJ_DIR)/
 	$(RM) $(O_SRCS)
+	$(RM) $(BONUS_O_SRCS)
 	clear
 
 fclean: clean 
 	$(RM_DIR) $(LIB_DIR)
 	$(RM) $(NAME)
+	$(RM) $(CHECKER)
 	clear
 
 re: fclean all
-	clear
-
-bonus:
-	$(MAKE) -C projects all
-	$(CC) $(CFLAGS) $(BONUS_O_SRCS) $(LIB_DIR)/$(LIB) -o $(CHECKER)
 	clear
 
 push:

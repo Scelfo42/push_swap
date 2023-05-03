@@ -37,10 +37,10 @@ void	ft_stack_any(t_stack **a, t_stack **b)
 			else
 				ft_reverse_rotate(a, 'a', true);
 		}
-		ft_push(a, b, 'b');
+		ft_push(a, b, 'b', true);
 	}
-	if (!ft_check_order(a))
+	if (!ft_check_order(*a))
 		ft_stack3(a);
 	while ((*b)->size != 0)
-		ft_push(b, a, 'a');
+		ft_push(b, a, 'a', true);
 }
