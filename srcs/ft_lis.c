@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../header/ft_push_swap.h"
+#include <stdio.h>
 
 void	ft_go_back_min(t_stack **a)
 {
@@ -43,7 +44,7 @@ void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis)
 	int	i;
 
 	i = 0;
-	while ((*a)->size > lis->len)
+	while (((*a)->size > lis->len))
 	{
 		if ((*a)->top->data == lis->array[i])
 		{
@@ -53,11 +54,9 @@ void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis)
 		else
 			ft_push(a, b, 'b', true);
 	}
-	while ((*a)->top->data != lis->array[0])
-		ft_push(a, b, 'b', true);
 }
 
-int	*ft_lis(t_lis *lis, int stack_size)
+long int	*ft_lis(t_lis *lis, int stack_size)
 {
 	int	*tmp_lis;
 	int	i;
@@ -65,25 +64,33 @@ int	*ft_lis(t_lis *lis, int stack_size)
 
 	tmp_lis = ft_calloc(stack_size, sizeof(int));
 	i = -1;
+	j = -1;
 	while (++i < stack_size)
 		tmp_lis[i] = 1;
-	i = 0;
-	while (i < stack_size)
+	while (++j < stack_size)
 	{
-		j = i + 1;
-		i = -1;
-		while (++i < j)
+		i = j - 1;
+		while (++i < stack_size)
 		{
-			if ((lis->stack_arr[i] < lis->stack_arr[j]) \
-				&& (tmp_lis[j] <= tmp_lis[i]))
-				tmp_lis[j] = tmp_lis[i] + 1;
+			if (lis->stack_arr[j] < lis->stack_arr[i] && tmp_lis[j] == tmp_lis[i])
+			{
+				tmp_lis[i] += 1;
+				if (tmp_lis[i] > lis->len)
+					lis->len = tmp_lis[i];
+			}
 		}
-		if (tmp_lis[j] > lis->len && tmp_lis[j] < stack_size)
-			lis->len = tmp_lis[j];
 	}
+	// i = -1;
+	// while (++i < stack_size)
+		// ft_printf("\ntmp_lis[%d] = %d -> lis->stack_arr = %d\n\n", i, tmp_lis[i], lis->stack_arr[i]);
 	lis->array = ft_clean_lis_array(lis, tmp_lis, stack_size);
 	free(tmp_lis);
 	return (lis->array);
+	// i = -1;
+	// while (++i <= lis->len)
+	// 	printf("\nlis->array[%d] = %ld\n\n", i, lis->array[i]);
+	// ft_printf("\nlis->len = %d", lis->len);
+	// exit(0);
 }
 
 void	ft_stack_big(t_stack **a, t_stack **b)
@@ -93,6 +100,13 @@ void	ft_stack_big(t_stack **a, t_stack **b)
 	lis = (t_lis *)malloc(sizeof(t_lis));
 	lis->len = 1;
 	lis->stack_arr = ft_stack_to_arr((*a)->top, (*a)->size);
+	// if (lis->stack_arr)
+	// {
+	// 	int i = -1;
+	// 	while (++i < (*a)->size)
+	// 		ft_printf("\narr[%d] -> %d\n", i, lis->stack_arr[i]);
+	// 	exit(0);
+	// }
 	lis->array = ft_lis(lis, (*a)->size);
 	ft_lis_selection(a, b, lis);
 	ft_algo(a, b, lis);

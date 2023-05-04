@@ -31,8 +31,9 @@ typedef struct s_stack
 
 typedef struct s_lis
 {
-	int	*array;
+	long int	*array;
 	int	len;
+	int	index;
 	int	*stack_arr;
 	int	*mov_a;
 	int	*mov_b;
@@ -81,11 +82,11 @@ void	ft_free_world(t_stack **a, t_stack **b, char **new_argv, bool flag);
 /* LIS */
 void	ft_lis_selection(t_stack **a, t_stack **b, t_lis *lis);
 void	ft_go_back_min(t_stack **a);
-int		*ft_lis(t_lis *lis, int stack_size);
+long int	*ft_lis(t_lis *lis, int stack_size);
 /* LIS UTILS */
 int		*ft_stack_to_arr(t_node *top, int stack_size);
-bool	ft_search_better(t_lis *lis, int *tmp_lis, int breakpoint, int index);
-int		*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size);
+bool	ft_search_best_lis(t_lis *lis, int *tmp_lis, int breakpoint, int index);
+long int		*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size);
 /* ALGORITHM */
 int		ft_search_for_better(t_lis *lis, int stack_size, int pos);
 int		ft_best_combination_deco(t_lis *lis, int b_size);
