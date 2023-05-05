@@ -34,6 +34,7 @@ typedef struct s_lis
 	long int	*array;
 	int	len;
 	int	index;
+	long int	last;
 	int	*stack_arr;
 	int	*mov_a;
 	int	*mov_b;
@@ -85,7 +86,7 @@ void	ft_go_back_min(t_stack **a);
 long int	*ft_lis(t_lis *lis, int stack_size);
 /* LIS UTILS */
 int		*ft_stack_to_arr(t_node *top, int stack_size);
-bool	ft_search_best_lis(t_lis *lis, int *tmp_lis, int breakpoint, int index);
+bool	ft_search_best_lis(t_lis *lis, int *tmp_lis, int breakpoint);
 long int		*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size);
 /* ALGORITHM */
 int		ft_search_for_better(t_lis *lis, int stack_size, int pos);

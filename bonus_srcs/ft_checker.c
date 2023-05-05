@@ -20,6 +20,7 @@ static char	**ft_check_split(int *ac, char **av, bool *flag)
 	if (ft_strchr(av[1], ' '))
 	{
 		check_args = ft_split(av[1], ' ');
+		ft_printf("ao bello sto split");
 		if (!check_args)
 			return (0);
 		*ac = ft_matlen(check_args);
@@ -72,18 +73,17 @@ static void	ft_execute_input(t_stack **a, t_stack **b)
 		free(input);
 		input = NULL;
 		if (move == 0)
+		{
+			ft_error_message(NULL, false);
 			break ;
+		}
 		input = get_next_line_bonus(0);
 	}
-	if (ft_check_order(*a) && (*b)->size == 0 && move != 0)
+	// ft_printf("move here is: [%d]\n\n", move);
+	if ((move == 0) || (move == 1 && ft_check_order(*a)))
 		ft_printf("OK\n");
-	else
-	{
-		if (move == 0)
-			write(2, "Error\n", 6);
-		else
-			ft_printf("KO\n");
-	}
+	else if (!ft_check_order(*a))
+		ft_printf("KO\n");
 }
 
 int	main(int argc, char **argv)

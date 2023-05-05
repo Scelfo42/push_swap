@@ -82,15 +82,14 @@ long int	*ft_lis(t_lis *lis, int stack_size)
 	}
 	// i = -1;
 	// while (++i < stack_size)
-		// ft_printf("\ntmp_lis[%d] = %d -> lis->stack_arr = %d\n\n", i, tmp_lis[i], lis->stack_arr[i]);
+	// 	printf("\ntmp_lis[%d] = %d -> lis->stack_arr = %d\n\n", i, tmp_lis[i], lis->stack_arr[i]);
 	lis->array = ft_clean_lis_array(lis, tmp_lis, stack_size);
 	free(tmp_lis);
-	return (lis->array);
 	// i = -1;
 	// while (++i <= lis->len)
 	// 	printf("\nlis->array[%d] = %ld\n\n", i, lis->array[i]);
-	// ft_printf("\nlis->len = %d", lis->len);
-	// exit(0);
+	// ft_printf("\nlis->len = %d\n\n", lis->len);
+	return (lis->array);
 }
 
 void	ft_stack_big(t_stack **a, t_stack **b)
@@ -104,14 +103,14 @@ void	ft_stack_big(t_stack **a, t_stack **b)
 	// {
 	// 	int i = -1;
 	// 	while (++i < (*a)->size)
-	// 		ft_printf("\narr[%d] -> %d\n", i, lis->stack_arr[i]);
-	// 	exit(0);
+	// 		printf("\narr[%d] -> %d\n", i, lis->stack_arr[i]);
 	// }
 	lis->array = ft_lis(lis, (*a)->size);
 	ft_lis_selection(a, b, lis);
+	free(lis->stack_arr);
+	lis->stack_arr = NULL;
 	ft_algo(a, b, lis);
 	ft_go_back_min(a);
-	free(lis->stack_arr);
 	free(lis->array);
 	free(lis);
 }

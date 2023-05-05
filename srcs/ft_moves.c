@@ -16,7 +16,7 @@ void	ft_swap(t_stack **ab, char stack_name, bool if_print)
 {
 	int	tmp;
 
-	if (!(*ab)->top)
+	if (!(*ab)->top || !(*ab)->top->next)
 		return ;
 	tmp = (*ab)->top->data;
 	(*ab)->top->data = (*ab)->top->next->data;
@@ -34,7 +34,7 @@ void	ft_rotate(t_stack **ab, char stack_name, bool if_print)
 {
 	t_node	*tmp;
 
-	if (!(*ab)->top)
+	if (!(*ab)->top || !(*ab)->top->next)
 		return ;
 	tmp = (*ab)->top;
 	(*ab)->top = (*ab)->top->next;
@@ -56,7 +56,7 @@ void	ft_reverse_rotate(t_stack **ab, char stack_name, bool if_print)
 {
 	t_node	*tmp;
 
-	if (!(*ab)->top)
+	if (!(*ab)->top || !(*ab)->top->next)
 		return ;
 	tmp = (*ab)->bottom;
 	(*ab)->bottom = (*ab)->bottom->prev;
@@ -78,7 +78,7 @@ void	ft_push(t_stack **from, t_stack **to, char stack_to_name, bool flag)
 {
 	t_node	*save_first;
 
-	if (!(*from)->top)
+	if (!(*from)->top || !(*from)->top->next)
 		return ;
 	save_first = (*from)->top;
 	(*from)->top = (*from)->top->next;

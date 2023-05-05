@@ -27,22 +27,26 @@ int	*ft_stack_to_arr(t_node *stack_top, int stack_size)
 	return (arr);
 }
 
-bool	ft_search_best_lis(t_lis *lis, int *tmp_lis, int breakpoint, int stack_size)
+bool	ft_search_best_lis(t_lis *lis, int *tmp_lis, int breakpoint)
 {
 	int	interested;
 	int	potential;
 
 	interested = lis->stack_arr[breakpoint];
-	while (++breakpoint < stack_size)
+	if (interested < lis->last)
 	{
-		if (tmp_lis[breakpoint] == lis->index)
+		while (--breakpoint >= 0)
 		{
-			potential = lis->stack_arr[breakpoint];
-			if (potential > interested)
-				return (true);
+			if (tmp_lis[breakpoint] == lis->index)
+			{
+				potential = lis->stack_arr[breakpoint];
+				if (potential > interested && potential < lis->last)
+					return (true);
+			}
 		}
+		return (false);
 	}
-	return (false);
+	return (true);
 }
 
 long int	*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size)
@@ -54,16 +58,17 @@ long int	*ft_clean_lis_array(t_lis *lis, int *tmp_lis, int stack_size)
 	i = lis->len;
 	lis->array = ft_calloc(lis->len + 1, sizeof(long int));
 	lis->array[lis->len] = LONG_MAX;
+	lis->last = LONG_MAX;
 	lis->index = lis->len;
-	while (size > 0)
+	while (size-- > 0)
 	{
 		if (tmp_lis[size] == lis->index)
-			if (!ft_search_best_lis(lis, tmp_lis, size, stack_size))
+			if (!ft_search_best_lis(lis, tmp_lis, size))
 			{
 				lis->array[--i] = lis->stack_arr[size];
+				lis->last = lis->array[i];
 				lis->index -= 1;
 			}
-		size--;
 	}
 	return (lis->array);
 }
