@@ -29,6 +29,8 @@ bool	ft_check_order(t_stack *a)
 			following = following->next;
 		}
 	}
+	else if (a->size == 0)
+		return (false);
 	return (true);
 }
 

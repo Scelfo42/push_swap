@@ -6,7 +6,7 @@
 /*   By: cscelfo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:24:18 by cscelfo           #+#    #+#             */
-/*   Updated: 2023/04/14 11:31:18 by cscelfo          ###   ########.fr       */
+/*   Updated: 2023/05/06 15:30:44 by cscelfo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,15 @@ void	ft_push(t_stack **from, t_stack **to, char stack_to_name, bool flag)
 {
 	t_node	*save_first;
 
-	if (!(*from)->top || !(*from)->top->next)
+	if (!(*from)->top)
 		return ;
 	save_first = (*from)->top;
 	(*from)->top = (*from)->top->next;
 	save_first->next = NULL;
 	if ((*from)->top)
 		(*from)->top->prev = NULL;
+	else
+		(*from)->bottom = NULL;
 	(*from)->size -= 1;
 	(*to)->size += 1;
 	ft_add_before(save_first, to);

@@ -20,7 +20,7 @@ static char	**ft_check_split(int *ac, char **av, bool *flag)
 	if (ft_strchr(av[1], ' '))
 	{
 		check_args = ft_split(av[1], ' ');
-		ft_printf("ao bello sto split");
+		//ft_printf("ao bello sto split");
 		if (!check_args)
 			return (0);
 		*ac = ft_matlen(check_args);
@@ -60,7 +60,7 @@ static int	ft_which_move(t_stack **a, t_stack **b, char *input)
 	return (1);
 }
 
-static void	ft_execute_input(t_stack **a, t_stack **b)
+static void	ft_execute_input(t_stack **a, t_stack **b, char **argv, bool flag)
 {
 	char	*input;
 	int		move;
@@ -74,12 +74,12 @@ static void	ft_execute_input(t_stack **a, t_stack **b)
 		input = NULL;
 		if (move == 0)
 		{
+			ft_free_world(a, b, argv, flag);
 			ft_error_message(NULL, false);
 			break ;
 		}
 		input = get_next_line_bonus(0);
 	}
-	// ft_printf("move here is: [%d]\n\n", move);
 	if ((move == 0) || (move == 1 && ft_check_order(*a)))
 		ft_printf("OK\n");
 	else if (!ft_check_order(*a))
@@ -98,14 +98,14 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = ft_check_split(&argc, argv, &flag);
 	if (!argv)
-		return (0);
+		ft_error_message(argv, flag);
 	ft_check_errors(argc, argv, flag);
 	a = ft_calloc(1, sizeof(t_stack));
 	b = ft_calloc(1, sizeof(t_stack));
 	ft_populate(&a, argc, argv, flag);
 	ft_check_duplicates(&a, &b, argv, flag);
 	b->size = 0;
-	ft_execute_input(&a, &b);
+	ft_execute_input(&a, &b, argv, flag);
 	ft_free_world(&a, &b, argv, flag);
 	return (0);
 }

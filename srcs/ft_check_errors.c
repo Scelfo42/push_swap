@@ -16,7 +16,8 @@ void	ft_error_message(char **new_argv, bool flag)
 {
 	if (flag == true)
 		ft_free_argv(new_argv);
-	write(2, "Error\n", 6);
+	ft_putstr_fd ("Error\n", 2);
+	// write(2, "Error\n", 6);
 	exit(1);
 }
 
