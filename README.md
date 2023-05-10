@@ -4,7 +4,7 @@ This project involves sorting data on a stack, with a limited set of instruction
 
 **Project starting: 03/04/2023**
 
-**Project finished: ...**
+**Project finished: 06/05/2023**
 
 
 ## Result
